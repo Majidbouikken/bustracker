@@ -13,7 +13,20 @@ class SignUpPageState extends State<SignUpPagePage> {
       // Title of the Step
         title: new Text("Step 1"),
         // Content, it can be any widget here. Using basic Text for this example
-        content: new Text("Hello!"),
+        content: new Container(
+          width: 1080,
+          height: 52,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(100),
+            color: lightGrey,
+          ),
+          child: Center(
+            child: TextField(
+              style: TextStyle(fontSize: 24, color: Colors.black87),
+              decoration: InputDecoration(prefixIcon: Icon(Icons.verified_user),border: InputBorder.none),
+            ),
+          ),
+        ),
         isActive: true),
     new Step(
         title: new Text("Step 2"),
