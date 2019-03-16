@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:projet_2cp_g5/LogInPage.dart';
 import 'package:projet_2cp_g5/SignUpPage.dart';
 import 'package:projet_2cp_g5/Homepage.dart';
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-        home: new SignUpPagePage(),
+        home: new LogInPage(),
         theme: new ThemeData(
           primaryColor: Color(0xfff95149),
           textTheme: Theme.of(context).textTheme.copyWith(
@@ -47,6 +48,8 @@ class MyApp extends StatelessWidget {
               ),
         ),
         routes: <String, WidgetBuilder>{
+          "/HomePage": (BuildContext context) => new HomePage(),
+          "/SignUpPage": (BuildContext context) => new SignUpPagePage(),
           "/MenuOptions": (BuildContext context) => new MenuOptions(),
           "/MenuMesLignesDisponibles": (BuildContext context) =>
               new MesLignes(),
@@ -75,6 +78,14 @@ var darkGrey = Color(0xff606060);
 //Réglages
 var VilleActuelle = 'Oran, Algérie';
 var ValeurRayon = 400.0;
+
+class ThemeColors {
+  static const Color gradientPureOrange = Color(0xFFFFAD2C);
+  static const Color gradientOrange = Color(0xFFFB6145);
+  static const Color gradientRed = Color(0xFFFB4F4F);
+  static const Color gradientMagenta = Color(0xFFFC455C);
+  static const Color gradientPureMagenta = Color(0xFFFF2C7C);
+}
 
 class ColorsSocial{
   static const Color facebook = Color(0xFF3B5998);

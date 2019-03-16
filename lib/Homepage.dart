@@ -115,9 +115,9 @@ class HomePageState extends State<HomePage> {
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    analogousMagenta,
-                                    mainRed,
-                                    analogousOrange,
+                                    ThemeColors.gradientPureMagenta,
+                                    ThemeColors.gradientRed,
+                                    ThemeColors.gradientPureOrange,
                                   ],
                                 ),
                                 borderRadius: BorderRadius.circular(37),

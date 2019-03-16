@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'dart:ui' show ImageFilter;
 import 'package:projet_2cp_g5/main.dart';
 
 /* these variables are used to save onchange text fields values, if the confirm button is pressed,
      the true values of the settings will be affected by these guys, otherwise they'll be lost */
 
-// TODO: Replace the setters and getters with a common template
-String TempAdresseMail = "";
-String TempNumTel = "";
-String TempNom = "";
-String TempPrenom = "";
+// TODO: make the CONFIRMER ET ANNULER buttons work!
 
 class MenuOptions extends StatefulWidget {
   @override
@@ -97,7 +95,7 @@ class MenuOptionsState extends State<MenuOptions> {
                           ),
                           SizedBox(height: 8),
                           Slider(
-                            min: 100,
+                            min: 400,
                             max: 1000,
                             inactiveColor: lightGrey,
                             onChanged: (newRating) {
@@ -153,56 +151,111 @@ class MenuOptionsState extends State<MenuOptions> {
                             ),
                           ),
                           onPressed: () {
-                            AlertDialog Dialog = new AlertDialog(
-                              title: Text(
-                                "Changer votre adresse mail",
-                                style: Theme.of(context).textTheme.subhead,
-                              ),
-                              content: Column(
+                            MyDialog dialog = new MyDialog(
+                              child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
-                                  // this text field is for the Numero de telephone
-                                  TextField(
-                                    onChanged: (String value) {
-                                      User.setAdresseMail(value);
-                                    },
-                                    autofocus: true,
-                                    style: Theme.of(context).textTheme.display1,
-                                    decoration: InputDecoration(
-                                      hintText: User.getAdresseMail(),
-                                      hintStyle:
-                                          Theme.of(context).textTheme.display2,
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0),
+                                    child: Text(
+                                      "Changez l'adresse mail",
+                                      style:
+                                          Theme.of(context).textTheme.display1,
+                                    ),
+                                  ),
+
+                                  // this text field is for the NumTel
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12.0),
+                                    child: CupertinoTextField(
+                                      decoration:
+                                          BoxDecoration(color: lightGrey),
+                                      onChanged: (String value) {
+                                        User.setAdresseMail(value);
+                                      },
+                                      style:
+                                          Theme.of(context).textTheme.display1,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 12,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Expanded(
+                                          child: Container(
+                                            width: 1080,
+                                            height: 40,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: mainRed, width: 2),
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              color: Colors.white,
+                                            ),
+                                            child: FlatButton(
+                                                materialTapTargetSize:
+                                                    MaterialTapTargetSize
+                                                        .shrinkWrap,
+                                                onPressed: main,
+                                                child: Text(
+                                                  "ANNULER",
+                                                  style: new TextStyle(
+                                                      color: mainRed,
+                                                      fontFamily: 'Oxygen',
+                                                      fontSize: 12),
+                                                )),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 12,
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            width: 1080,
+                                            height: 40,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              gradient: LinearGradient(
+                                                colors: [
+                                                  ThemeColors.gradientOrange,
+                                                  ThemeColors.gradientRed,
+                                                  ThemeColors.gradientMagenta,
+                                                ],
+                                              ),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    color: Color(0xCCf95149),
+                                                    offset: Offset(0, 3),
+                                                    blurRadius: 10)
+                                              ],
+                                            ),
+                                            child: FlatButton(
+                                                materialTapTargetSize:
+                                                    MaterialTapTargetSize
+                                                        .shrinkWrap,
+                                                onPressed: main,
+                                                child: Text(
+                                                  "CONFIRMER",
+                                                  style: new TextStyle(
+                                                      color: Colors.white,
+                                                      fontFamily: 'Oxygen',
+                                                      fontSize: 12),
+                                                )),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
                               ),
-                              actions: <Widget>[
-                                RaisedButton(
-                                  color: Colors.white,
-                                  shape: Border.all(color: mainRed, width: 2),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 12),
-                                    child: Text("Annuler",
-                                        style: TextStyle(color: mainRed)),
-                                  ),
-                                  onPressed: () {},
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12),
-                                  child: RaisedButton(
-                                    color: mainRed,
-                                    child: Text(
-                                      "Confirmer",
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    onPressed: () {},
-                                  ),
-                                ),
-                              ],
                             );
-                            showDialog(context: context, child: Dialog);
+                            showDialog(context: context, child: dialog);
                           }),
                     )),
                 SizedBox(
@@ -232,56 +285,111 @@ class MenuOptionsState extends State<MenuOptions> {
                             ),
                           ),
                           onPressed: () {
-                            AlertDialog Dialog = new AlertDialog(
-                              title: Text(
-                                "Changer votre numero de téléphone",
-                                style: Theme.of(context).textTheme.subhead,
-                              ),
-                              content: Column(
+                            MyDialog dialog = new MyDialog(
+                              child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
-                                  // this text field is for the Numero de telephone
-                                  TextField(
-                                    onChanged: (String value) {
-                                      User.setNumTel(value);
-                                    },
-                                    autofocus: true,
-                                    style: Theme.of(context).textTheme.display1,
-                                    decoration: InputDecoration(
-                                      hintText: User.getNumTel(),
-                                      hintStyle:
-                                          Theme.of(context).textTheme.display2,
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0),
+                                    child: Text(
+                                      "Changez le numéro du téléphone",
+                                      style:
+                                          Theme.of(context).textTheme.display1,
+                                    ),
+                                  ),
+
+                                  // this text field is for the NumTel
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12.0),
+                                    child: CupertinoTextField(
+                                      decoration:
+                                          BoxDecoration(color: lightGrey),
+                                      onChanged: (String value) {
+                                        User.setNumTel(value);
+                                      },
+                                      style:
+                                          Theme.of(context).textTheme.display1,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 12,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Expanded(
+                                          child: Container(
+                                            width: 1080,
+                                            height: 40,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: mainRed, width: 2),
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              color: Colors.white,
+                                            ),
+                                            child: FlatButton(
+                                                materialTapTargetSize:
+                                                    MaterialTapTargetSize
+                                                        .shrinkWrap,
+                                                onPressed: main,
+                                                child: Text(
+                                                  "ANNULER",
+                                                  style: new TextStyle(
+                                                      color: mainRed,
+                                                      fontFamily: 'Oxygen',
+                                                      fontSize: 12),
+                                                )),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 12,
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            width: 1080,
+                                            height: 40,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              gradient: LinearGradient(
+                                                colors: [
+                                                  ThemeColors.gradientOrange,
+                                                  ThemeColors.gradientRed,
+                                                  ThemeColors.gradientMagenta,
+                                                ],
+                                              ),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    color: Color(0xCCf95149),
+                                                    offset: Offset(0, 3),
+                                                    blurRadius: 10)
+                                              ],
+                                            ),
+                                            child: FlatButton(
+                                                materialTapTargetSize:
+                                                    MaterialTapTargetSize
+                                                        .shrinkWrap,
+                                                onPressed: main,
+                                                child: Text(
+                                                  "CONFIRMER",
+                                                  style: new TextStyle(
+                                                      color: Colors.white,
+                                                      fontFamily: 'Oxygen',
+                                                      fontSize: 12),
+                                                )),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
                               ),
-                              actions: <Widget>[
-                                RaisedButton(
-                                  color: Colors.white,
-                                  shape: Border.all(color: mainRed, width: 2),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 12),
-                                    child: Text("Annuler",
-                                        style: TextStyle(color: mainRed)),
-                                  ),
-                                  onPressed: () {},
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12),
-                                  child: RaisedButton(
-                                    color: mainRed,
-                                    child: Text(
-                                      "Confirmer",
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    onPressed: () {},
-                                  ),
-                                ),
-                              ],
                             );
-                            showDialog(context: context, child: Dialog);
+                            showDialog(context: context, child: dialog);
                           }),
                     )),
 
@@ -314,74 +422,127 @@ class MenuOptionsState extends State<MenuOptions> {
                             ),
                           ),
                           onPressed: () {
-                            AlertDialog Dialog = new AlertDialog(
-                              title: Text(
-                                "Modifier le nom et le prénom",
-                                style: Theme.of(context).textTheme.subhead,
-                              ),
-                              content: Column(
+                            MyDialog dialog = new MyDialog(
+                              child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
-                                  // this text field is for the Prenom
-                                  TextField(
-                                    onChanged: (String value) {
-                                      User.setPrenom(value);
-                                    },
-                                    style: Theme.of(context).textTheme.display1,
-                                    decoration: InputDecoration(
-                                      hintText: User.getPrenom(),
-                                      hintStyle:
-                                      Theme.of(context).textTheme.display2,
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0),
+                                    child: Text(
+                                      "Modifier le nom et le prénom",
+                                      style:
+                                          Theme.of(context).textTheme.display1,
+                                    ),
+                                  ),
+                                  // this text field is for new Password
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12.0),
+                                    child: CupertinoTextField(
+                                      decoration:
+                                          BoxDecoration(color: lightGrey),
+                                      onChanged: (String value) {
+                                        User.setNom(value);
+                                      },
+                                      style:
+                                          Theme.of(context).textTheme.display1,
                                     ),
                                   ),
 
-                                  // this text field is for the Nom
-                                  TextField(
-                                    onChanged: (String value) {
-                                      User.setNom(value);
-                                    },
-                                    style: Theme.of(context).textTheme.display1,
-                                    decoration: InputDecoration(
-                                      hintText: User.getNom(),
-                                      hintStyle:
-                                      Theme.of(context).textTheme.display2,
+                                  SizedBox(height: 8),
+
+                                  // this text field is for confirming the new password
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12.0),
+                                    child: CupertinoTextField(
+                                      decoration:
+                                          BoxDecoration(color: lightGrey),
+                                      onChanged: (String value) {
+                                        User.setPrenom(value);
+                                      },
+                                      style:
+                                          Theme.of(context).textTheme.display1,
                                     ),
                                   ),
-                                  SizedBox(height: 12,),
-                                  Row(
-                                    children: <Widget>[
-                                      Expanded(
-                                        child: RaisedButton(
-                                          color: Colors.white,
-                                          shape: Border.all(
-                                              color: mainRed, width: 2),
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 12),
-                                            child: Text("Annuler",
-                                                style: TextStyle(color: mainRed)),
+                                  SizedBox(
+                                    height: 12,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Expanded(
+                                          child: Container(
+                                            width: 1080,
+                                            height: 40,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: mainRed, width: 2),
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              color: Colors.white,
+                                            ),
+                                            child: FlatButton(
+                                                materialTapTargetSize:
+                                                    MaterialTapTargetSize
+                                                        .shrinkWrap,
+                                                onPressed: main,
+                                                child: Text(
+                                                  "ANNULER",
+                                                  style: new TextStyle(
+                                                      color: mainRed,
+                                                      fontFamily: 'Oxygen',
+                                                      fontSize: 12),
+                                                )),
                                           ),
-                                          onPressed: () {},
                                         ),
-                                      ),
-                                      SizedBox(width: 12,),
-                                      Expanded(
-                                        child: RaisedButton(
-                                          color: mainRed,
-                                          child: Text(
-                                            "Confirmer",
-                                            style:
-                                            TextStyle(color: Colors.white),
+                                        SizedBox(
+                                          width: 12,
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            width: 1080,
+                                            height: 40,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              gradient: LinearGradient(
+                                                colors: [
+                                                  ThemeColors.gradientOrange,
+                                                  ThemeColors.gradientRed,
+                                                  ThemeColors.gradientMagenta,
+                                                ],
+                                              ),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    color: Color(0xCCf95149),
+                                                    offset: Offset(0, 3),
+                                                    blurRadius: 10)
+                                              ],
+                                            ),
+                                            child: FlatButton(
+                                                materialTapTargetSize:
+                                                    MaterialTapTargetSize
+                                                        .shrinkWrap,
+                                                onPressed: main,
+                                                child: Text(
+                                                  "CONFIRMER",
+                                                  style: new TextStyle(
+                                                      color: Colors.white,
+                                                      fontFamily: 'Oxygen',
+                                                      fontSize: 12),
+                                                )),
                                           ),
-                                          onPressed: () {},
                                         ),
-                                      ),
-                                    ],
-                                  )
+                                      ],
+                                    ),
+                                  ),
                                 ],
-                              )
+                              ),
                             );
-                            showDialog(context: context, child: Dialog);
+                            showDialog(context: context, child: dialog);
                           }),
                     )),
                 SizedBox(
@@ -408,7 +569,138 @@ class MenuOptionsState extends State<MenuOptions> {
                               ],
                             ),
                           ),
-                          onPressed: main),
+                          onPressed: () {
+                            MyDialog dialog = new MyDialog(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0),
+                                    child: Text(
+                                      "Nouveau mot de passe",
+                                      style:
+                                          Theme.of(context).textTheme.display1,
+                                    ),
+                                  ),
+                                  // this text field is for new Password
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12.0),
+                                    child: CupertinoTextField(
+                                      decoration:
+                                          BoxDecoration(color: lightGrey),
+                                      onChanged: (String value) {},
+                                      style:
+                                          Theme.of(context).textTheme.display1,
+                                    ),
+                                  ),
+
+                                  SizedBox(height: 6),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Text("Confirmez le mot de passe",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .body1),
+                                        Expanded(child: SizedBox(),)
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 6),
+
+                                  // this text field is for confirming the new password
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12.0),
+                                    child: CupertinoTextField(
+                                      decoration:
+                                          BoxDecoration(color: lightGrey),
+                                      onChanged: (String value) {},
+                                      style:
+                                          Theme.of(context).textTheme.display1,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 12,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Expanded(
+                                          child: Container(
+                                            width: 1080,
+                                            height: 40,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: mainRed, width: 2),
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              color: Colors.white,
+                                            ),
+                                            child: FlatButton(
+                                                materialTapTargetSize:
+                                                    MaterialTapTargetSize
+                                                        .shrinkWrap,
+                                                onPressed: main,
+                                                child: Text(
+                                                  "ANNULER",
+                                                  style: new TextStyle(
+                                                      color: mainRed,
+                                                      fontFamily: 'Oxygen',
+                                                      fontSize: 12),
+                                                )),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 12,
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            width: 1080,
+                                            height: 40,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              gradient: LinearGradient(
+                                                colors: [
+                                                  ThemeColors.gradientOrange,
+                                                  ThemeColors.gradientRed,
+                                                  ThemeColors.gradientMagenta,
+                                                ],
+                                              ),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    color: Color(0xCCf95149),
+                                                    offset: Offset(0, 3),
+                                                    blurRadius: 10)
+                                              ],
+                                            ),
+                                            child: FlatButton(
+                                                materialTapTargetSize:
+                                                    MaterialTapTargetSize
+                                                        .shrinkWrap,
+                                                onPressed: main,
+                                                child: Text(
+                                                  "CONFIRMER",
+                                                  style: new TextStyle(
+                                                      color: Colors.white,
+                                                      fontFamily: 'Oxygen',
+                                                      fontSize: 12),
+                                                )),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                            showDialog(context: context, child: dialog);
+                          }),
                     )),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -464,14 +756,16 @@ class MenuOptionsState extends State<MenuOptions> {
                           ),
                           Text(
                             'Montrer une vidéo',
-                            style:
-                                TextStyle(fontSize: 11, color: complementaryBlue),
+                            style: TextStyle(
+                                fontSize: 11, color: complementaryBlue),
                           ),
                         ],
                       ),
                     ),
                     onPressed: () {
-                      SimpleDialog dialog = new SimpleDialog(children: <Widget>[Text("Tutorial")],);
+                      SimpleDialog dialog = new SimpleDialog(
+                        children: <Widget>[Text("Tutorial")],
+                      );
                       showDialog(context: context, child: dialog);
                     },
                   ),
@@ -488,3 +782,71 @@ class MenuOptionsState extends State<MenuOptions> {
     );
   }
 }
+
+/// This is the MyDialog class that i created to show a custom dialog, it is inspired from the CuppertinoDialog
+class MyDialog extends StatelessWidget {
+  /// Creates an iOS-style dialog.
+  const MyDialog({
+    Key key,
+    this.child,
+  }) : super(key: key);
+
+  /// The widget below this widget in the tree.
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width - 32,
+        child: MyPopupSurface(
+          child: child,
+        ),
+      ),
+    );
+  }
+}
+
+class MyPopupSurface extends StatelessWidget {
+  /// Creates an iOS-style rounded rectangle popup surface.
+  const MyPopupSurface({
+    Key key,
+    this.isSurfacePainted = true,
+    this.child,
+  }) : super(key: key);
+
+  /// Whether or not to paint a translucent white on top of this surface's
+  /// blurred background. [isSurfacePainted] should be true for a typical popup
+  /// that contains content without any dividers. A popup that requires dividers
+  /// should set [isSurfacePainted] to false and then paint its own surface area.
+  ///
+  /// Some popups, like iOS's volume control popup, choose to render a blurred
+  /// area without any white paint covering it. To achieve this effect,
+  /// [isSurfacePainted] should be set to false.
+  final bool isSurfacePainted;
+
+  /// The widget below this widget in the tree.
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(25),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 40, sigmaY: 20),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            backgroundBlendMode: BlendMode.overlay,
+          ),
+          child: Container(
+            color: isSurfacePainted ? Colors.white : null,
+            child: child,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+///

@@ -6,26 +6,48 @@ class SignUpPagePage extends StatefulWidget {
   State createState() => new SignUpPageState();
 }
 
+///i tried to implement a stepper in the Sign Up Page for a good looking page
+
 class SignUpPageState extends State<SignUpPagePage> {
+  /*
   int current_step = 0;
+
   List<Step> my_steps = [
     new Step(
       // Title of the Step
-        title: new Text("Step 1"),
+        title: new Text("Add your name and email"),
         // Content, it can be any widget here. Using basic Text for this example
-        content: new Container(
-          width: 1080,
-          height: 52,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100),
-            color: lightGrey,
-          ),
-          child: Center(
-            child: TextField(
-              style: TextStyle(fontSize: 24, color: Colors.black87),
-              decoration: InputDecoration(prefixIcon: Icon(Icons.verified_user),border: InputBorder.none),
+        content: new Column(
+          children: <Widget>[
+            Container(
+              width: 1080,
+              height: 52,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: lightGrey,
+              ),
+              child: Center(
+                child: TextField(
+                  style: TextStyle(fontSize: 24, color: Colors.black87),
+                  decoration: InputDecoration(prefixIcon: Icon(Icons.verified_user),border: InputBorder.none),
+                ),
+              ),
             ),
-          ),
+            Container(
+              width: 1080,
+              height: 52,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: lightGrey,
+              ),
+              child: Center(
+                child: TextField(
+                  style: TextStyle(fontSize: 24, color: Colors.black87),
+                  decoration: InputDecoration(prefixIcon: Icon(Icons.verified_user),border: InputBorder.none),
+                ),
+              ),
+            ),
+          ],
         ),
         isActive: true),
     new Step(
@@ -39,61 +61,160 @@ class SignUpPageState extends State<SignUpPagePage> {
         content: new Text("Hello World!"),
         isActive: true),
   ];
-
+*/
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       // Body
-      body: new Container(
-          child: new Stepper(
-            // Using a variable here for handling the currentStep
-            currentStep: this.current_step,
-            // List the steps you would like to have
-            steps: my_steps,
-            // Define the type of Stepper style
-            // StepperType.horizontal :  Horizontal Style
-            // StepperType.vertical   :  Vertical Style
-            type: StepperType.vertical,
-            // Know the step that is tapped
-            onStepTapped: (step) {
-              // On hitting step itself, change the state and jump to that step
-              setState(() {
-                // update the variable handling the current step value
-                // jump to the tapped step
-                current_step = step;
-              });
-              // Log function call
-              print("onStepTapped : " + step.toString());
-            },
-            onStepCancel: () {
-              // On hitting cancel button, change the state
-              setState(() {
-                // update the variable handling the current step value
-                // going back one step i.e subtracting 1, until its 0
-                if (current_step > 0) {
-                  current_step = current_step - 1;
-                } else {
-                  current_step = 0;
-                }
-              });
-              // Log function call
-              print("onStepCancel : " + current_step.toString());
-            },
-            // On hitting continue button, change the state
-            onStepContinue: () {
-              setState(() {
-                // update the variable handling the current step value
-                // going back one step i.e adding 1, until its the length of the step
-                if (current_step < my_steps.length - 1) {
-                  current_step = current_step + 1;
-                } else {
-                  current_step = 0;
-                }
-              });
-              // Log function call
-              print("onStepContinue : " + current_step.toString());
-            },
-          )),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 32),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "Inscription",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'Montserrat',
+                  fontSize: 28),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Container(
+              width: 1080,
+              height: 52,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: lightGrey,
+              ),
+              child: Center(
+                child: TextField(
+                  onChanged: (String value) {
+                    User.setPrenom(value);
+                  },
+                  style: TextStyle(fontSize: 20, color: Colors.black87),
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.account_circle),
+                    border: InputBorder.none,
+                    hintText: "Prénom",
+                    hintStyle: Theme.of(context).textTheme.display2,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Container(
+              width: 1080,
+              height: 52,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: lightGrey,
+              ),
+              child: Center(
+                child: TextField(
+                  onChanged: (String value) {
+                    User.setNom(value);
+                  },
+                  style: TextStyle(fontSize: 20, color: Colors.black87),
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.account_circle),
+                    border: InputBorder.none,
+                    hintText: "Nom",
+                    hintStyle: Theme.of(context).textTheme.display2,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Container(
+              width: 1080,
+              height: 52,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: lightGrey,
+              ),
+              child: Center(
+                child: TextField(
+                  onChanged: (String value) {
+                    User.setAdresseMail(value);
+                  },
+                  style: TextStyle(fontSize: 20, color: Colors.black87),
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.mail),
+                    border: InputBorder.none,
+                    hintText: "Adresse mail",
+                    hintStyle: Theme.of(context).textTheme.display2,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Container(
+              width: 1080,
+              height: 52,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: lightGrey,
+              ),
+              child: Center(
+                child: TextField(
+                  style: TextStyle(fontSize: 20, color: Colors.black87),
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.verified_user),
+                    border: InputBorder.none,
+                    hintText: "Mot de passe",
+                    hintStyle: Theme.of(context).textTheme.display2,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Container(
+              width: 1080,
+              height: 52,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                gradient: LinearGradient(
+                  colors: [
+                    ThemeColors.gradientOrange,
+                    ThemeColors.gradientRed,
+                    ThemeColors.gradientMagenta,
+                  ],
+                ),
+                boxShadow: [
+                  BoxShadow(
+                      color: Color(0xCCf95149),
+                      offset: Offset(0, 3),
+                      blurRadius: 10)
+                ],
+              ),
+              child: FlatButton(
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed("/HomePage");
+                  },
+                  child: Text(
+                    "S'INSCRIRE",
+                    style: new TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'Oxygen',
+                        fontSize: 16),
+                  )),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
