@@ -1,0 +1,98 @@
+import 'package:flutter/material.dart';
+import 'package:projet_2cp_g5/LogInPage.dart';
+import 'package:projet_2cp_g5/SignUpPage.dart';
+import 'package:projet_2cp_g5/Homepage.dart';
+import 'package:projet_2cp_g5/Menuoptions.dart';
+import 'package:projet_2cp_g5/Menulignesdisponibles.dart';
+
+void main() => runApp(new MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+        home: new SignUpPagePage(),
+        theme: new ThemeData(
+          primaryColor: Color(0xfff95149),
+          textTheme: Theme.of(context).textTheme.copyWith(
+                title: new TextStyle(
+                    color: Colors.black87,
+                    fontFamily: 'Oxygen',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24),
+                body1: new TextStyle(
+                    color: mediumGrey, fontFamily: 'Oxygen', fontSize: 14),
+                body2: new TextStyle(
+                    color: mediumGrey, fontFamily: 'Montserrat', fontSize: 11),
+                headline: new TextStyle(
+                    color: Colors.black, fontFamily: 'Oxygen', fontSize: 18),
+                //
+                subhead: new TextStyle(
+                    color: mainRed,
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16),
+
+                /// i used this in Fieled Texts in TextFields
+                display1: new TextStyle(
+                    color: Colors.black87,
+                    fontFamily: 'Oxygen',
+                    fontSize: 18),
+
+                /// i used this in hintTexts in TextFields
+                display2: new TextStyle(
+                    color: mediumGrey,
+                    fontFamily: 'Oxygen',
+                    fontSize: 18),
+              ),
+        ),
+        routes: <String, WidgetBuilder>{
+          "/MenuOptions": (BuildContext context) => new MenuOptions(),
+          "/MenuMesLignesDisponibles": (BuildContext context) =>
+              new MesLignes(),
+        });
+  }
+}
+
+// TODO: replace the shadow of material and container with just container in main drawer buttons, lignes dispo ... etc
+// TODO: add icons
+
+// Colors
+var mainRed = Color(0xfff95149);
+
+var complementaryBlue = Color(0xFF00CCF3);
+var highlightedBlue = Color(0xFFD8FAFF);
+
+var analogousOrange = Color.fromARGB(255, 254, 170, 44);
+var highlightedOrange = Color(0xFFFFF3E0);
+var analogousMagenta = Color(0xFFFE2C80);
+var highlightedMagenta = Color(0xFFFFE4ED);
+
+var lightGrey = Color(0xfff5f5f5);
+var mediumGrey = Color(0xff9c9c9c);
+var darkGrey = Color(0xff606060);
+
+//Réglages
+var VilleActuelle = 'Oran, Algérie';
+var ValeurRayon = 400.0;
+
+class ColorsSocial{
+  static const Color facebook = Color(0xFF3B5998);
+
+}
+
+class User{
+  static String AdresseMail = 'ha_bouikken_bahi_amar@esi.dz';
+  static String NumTel = '+213560834326';
+  static String Nom = 'Bouikken';
+  static String Prenom = 'Abdelmajid';
+  // just some setters and getters
+  static void setAdresseMail(String value){AdresseMail = value;}
+  static String getAdresseMail(){return AdresseMail;}
+  static void setNumTel(String value){NumTel = value;}
+  static String getNumTel(){return NumTel;}
+  static void setNom(String value){Nom = value;}
+  static String getNom(){return Nom;}
+  static void setPrenom(String value){Prenom = value;}
+  static String getPrenom(){return Prenom;}
+}
