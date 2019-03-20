@@ -22,14 +22,14 @@ class MyApp extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 24),
                 body1: new TextStyle(
-                    color: mediumGrey, fontFamily: 'Oxygen', fontSize: 14),
+                    color: ThemeColors.mediumGrey, fontFamily: 'Oxygen', fontSize: 14),
                 body2: new TextStyle(
-                    color: mediumGrey, fontFamily: 'Montserrat', fontSize: 11),
+                    color: ThemeColors.mediumGrey, fontFamily: 'Montserrat', fontSize: 11),
                 headline: new TextStyle(
                     color: Colors.black, fontFamily: 'Oxygen', fontSize: 18),
                 //
                 subhead: new TextStyle(
-                    color: mainRed,
+                    color: ThemeColors.mainRed,
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
                     fontSize: 16),
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
 
                 /// i used this in hintTexts in TextFields
                 display2: new TextStyle(
-                    color: mediumGrey,
+                    color: ThemeColors.mediumGrey,
                     fontFamily: 'Oxygen',
                     fontSize: 18),
               ),
@@ -61,25 +61,21 @@ class MyApp extends StatelessWidget {
 // TODO: add icons
 
 // Colors
-var mainRed = Color(0xfff95149);
-
-var complementaryBlue = Color(0xFF00CCF3);
-var highlightedBlue = Color(0xFFD8FAFF);
-
-var analogousOrange = Color.fromARGB(255, 254, 170, 44);
-var highlightedOrange = Color(0xFFFFF3E0);
-var analogousMagenta = Color(0xFFFE2C80);
-var highlightedMagenta = Color(0xFFFFE4ED);
-
-var lightGrey = Color(0xfff5f5f5);
-var mediumGrey = Color(0xff9c9c9c);
-var darkGrey = Color(0xff606060);
-
-//Réglages
-var VilleActuelle = 'Oran, Algérie';
-var ValeurRayon = 400.0;
-
 class ThemeColors {
+  static const mainRed = Color(0xfff95149);
+
+  static const complementaryBlue = Color(0xFF00CCF3);
+  static const highlightedBlue = Color(0xFFD8FAFF);
+
+  static const analogousOrange = Color.fromARGB(255, 254, 170, 44);
+  static const highlightedOrange = Color(0xFFFFF3E0);
+  static const analogousMagenta = Color(0xFFFE2C80);
+  static const highlightedMagenta = Color(0xFFFFE4ED);
+
+  static const lightGrey = Color(0xfff5f5f5);
+  static const mediumGrey = Color(0xff9c9c9c);
+  static const darkGrey = Color(0xff606060);
+
   static const Color gradientPureOrange = Color(0xFFFFAD2C);
   static const Color gradientOrange = Color(0xFFFB6145);
   static const Color gradientRed = Color(0xFFFB4F4F);
@@ -91,6 +87,12 @@ class ColorsSocial{
   static const Color facebook = Color(0xFF3B5998);
 
 }
+
+//Réglages
+var VilleActuelle = 'Oran, Algérie';
+var ValeurRayon = 400.0;
+
+
 
 class User{
   static String AdresseMail = 'ha_bouikken_bahi_amar@esi.dz';

@@ -97,7 +97,7 @@ class MenuOptionsState extends State<MenuOptions> {
                           Slider(
                             min: 400,
                             max: 1000,
-                            inactiveColor: lightGrey,
+                            inactiveColor: ThemeColors.lightGrey,
                             onChanged: (newRating) {
                               setState(() => ValeurRayon = newRating);
                             },
@@ -171,7 +171,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                         horizontal: 12.0),
                                     child: CupertinoTextField(
                                       decoration:
-                                          BoxDecoration(color: lightGrey),
+                                          BoxDecoration(color: ThemeColors.lightGrey),
                                       onChanged: (String value) {
                                         User.setAdresseMail(value);
                                       },
@@ -192,7 +192,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                             height: 40,
                                             decoration: BoxDecoration(
                                               border: Border.all(
-                                                  color: mainRed, width: 2),
+                                                  color: ThemeColors.mainRed, width: 2),
                                               borderRadius:
                                                   BorderRadius.circular(100),
                                               color: Colors.white,
@@ -205,7 +205,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
-                                                      color: mainRed,
+                                                      color: ThemeColors.mainRed,
                                                       fontFamily: 'Oxygen',
                                                       fontSize: 12),
                                                 )),
@@ -305,7 +305,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                         horizontal: 12.0),
                                     child: CupertinoTextField(
                                       decoration:
-                                          BoxDecoration(color: lightGrey),
+                                          BoxDecoration(color: ThemeColors.lightGrey),
                                       onChanged: (String value) {
                                         User.setNumTel(value);
                                       },
@@ -326,7 +326,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                             height: 40,
                                             decoration: BoxDecoration(
                                               border: Border.all(
-                                                  color: mainRed, width: 2),
+                                                  color: ThemeColors.mainRed, width: 2),
                                               borderRadius:
                                                   BorderRadius.circular(100),
                                               color: Colors.white,
@@ -339,7 +339,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
-                                                      color: mainRed,
+                                                      color: ThemeColors.mainRed,
                                                       fontFamily: 'Oxygen',
                                                       fontSize: 12),
                                                 )),
@@ -441,7 +441,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                         horizontal: 12.0),
                                     child: CupertinoTextField(
                                       decoration:
-                                          BoxDecoration(color: lightGrey),
+                                          BoxDecoration(color: ThemeColors.lightGrey),
                                       onChanged: (String value) {
                                         User.setNom(value);
                                       },
@@ -458,7 +458,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                         horizontal: 12.0),
                                     child: CupertinoTextField(
                                       decoration:
-                                          BoxDecoration(color: lightGrey),
+                                          BoxDecoration(color: ThemeColors.lightGrey),
                                       onChanged: (String value) {
                                         User.setPrenom(value);
                                       },
@@ -479,7 +479,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                             height: 40,
                                             decoration: BoxDecoration(
                                               border: Border.all(
-                                                  color: mainRed, width: 2),
+                                                  color: ThemeColors.mainRed, width: 2),
                                               borderRadius:
                                                   BorderRadius.circular(100),
                                               color: Colors.white,
@@ -492,7 +492,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
-                                                      color: mainRed,
+                                                      color: ThemeColors.mainRed,
                                                       fontFamily: 'Oxygen',
                                                       fontSize: 12),
                                                 )),
@@ -589,7 +589,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                         horizontal: 12.0),
                                     child: CupertinoTextField(
                                       decoration:
-                                          BoxDecoration(color: lightGrey),
+                                          BoxDecoration(color: ThemeColors.lightGrey),
                                       onChanged: (String value) {},
                                       style:
                                           Theme.of(context).textTheme.display1,
@@ -617,7 +617,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                         horizontal: 12.0),
                                     child: CupertinoTextField(
                                       decoration:
-                                          BoxDecoration(color: lightGrey),
+                                          BoxDecoration(color: ThemeColors.lightGrey),
                                       onChanged: (String value) {},
                                       style:
                                           Theme.of(context).textTheme.display1,
@@ -636,7 +636,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                             height: 40,
                                             decoration: BoxDecoration(
                                               border: Border.all(
-                                                  color: mainRed, width: 2),
+                                                  color: ThemeColors.mainRed, width: 2),
                                               borderRadius:
                                                   BorderRadius.circular(100),
                                               color: Colors.white,
@@ -649,7 +649,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
-                                                      color: mainRed,
+                                                      color: ThemeColors.mainRed,
                                                       fontFamily: 'Oxygen',
                                                       fontSize: 12),
                                                 )),
@@ -731,7 +731,7 @@ class MenuOptionsState extends State<MenuOptions> {
                   padding: const EdgeInsets.symmetric(horizontal: 80),
                   child: RaisedButton(
                     color: Colors.white,
-                    splashColor: highlightedBlue,
+                    splashColor: ThemeColors.highlightedBlue,
                     highlightColor: Colors.transparent,
                     elevation: 2,
                     highlightElevation: 1,
@@ -748,7 +748,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                   padding: EdgeInsets.all(4),
                                   child: Icon(
                                     Icons.play_arrow,
-                                    color: complementaryBlue,
+                                    color: ThemeColors.complementaryBlue,
                                     size: 22,
                                   ))),
                           SizedBox(
@@ -757,7 +757,7 @@ class MenuOptionsState extends State<MenuOptions> {
                           Text(
                             'Montrer une vidéo',
                             style: TextStyle(
-                                fontSize: 11, color: complementaryBlue),
+                                fontSize: 11, color: ThemeColors.complementaryBlue),
                           ),
                         ],
                       ),

@@ -48,6 +48,7 @@ flutter:
 
   assets:
     - assets/images/photo de profile.png
+    - assets/images/ligne.png
     #   - family: Trajan Pro
     #     fonts:
     #       - asset: fonts/TrajanPro.ttf

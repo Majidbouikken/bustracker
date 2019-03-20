@@ -48,7 +48,7 @@ class HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.all(12.0),
                       child: Icon(
                         Icons.pin_drop,
-                        color: mainRed,
+                        color: ThemeColors.mainRed,
                         size: 24,
                       ),
                     ),
@@ -81,8 +81,8 @@ class HomePageState extends State<HomePage> {
                     Expanded(child: SizedBox()),
                     FloatingActionButton(
                       onPressed: main,
-                      foregroundColor: analogousMagenta,
-                      backgroundColor: mainRed,
+                      foregroundColor: ThemeColors.analogousMagenta,
+                      backgroundColor: ThemeColors.mainRed,
                     ),
                     Expanded(child: SizedBox()),
                     IconButton(icon: Icon(Icons.pin_drop), onPressed: main),
@@ -165,7 +165,7 @@ class HomePageState extends State<HomePage> {
                       Expanded(
                           child: RaisedButton(
                         color: Colors.white,
-                        splashColor: highlightedOrange,
+                        splashColor: ThemeColors.highlightedOrange,
                         highlightColor: Colors.transparent,
                         highlightElevation: 1,
                         child: Container(
@@ -191,7 +191,7 @@ class HomePageState extends State<HomePage> {
                                       padding: EdgeInsets.all(4),
                                       child: Icon(
                                         Icons.link,
-                                        color: analogousOrange,
+                                        color: ThemeColors.analogousOrange,
                                         size: 22,
                                       )),
                                 ),
@@ -202,7 +202,7 @@ class HomePageState extends State<HomePage> {
                               Text(
                                 'Lignes disponibles',
                                 style: TextStyle(
-                                    fontSize: 11, color: analogousOrange),
+                                    fontSize: 11, color: ThemeColors.analogousOrange),
                               ),
                             ],
                           ),
@@ -218,7 +218,7 @@ class HomePageState extends State<HomePage> {
                       Expanded(
                           child: RaisedButton(
                         color: Colors.white,
-                        splashColor: highlightedMagenta,
+                        splashColor: ThemeColors.highlightedMagenta,
                         highlightColor: Colors.transparent,
                         highlightElevation: 1,
                         child: Container(
