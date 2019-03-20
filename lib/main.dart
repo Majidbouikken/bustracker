@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
         home: new LogInPage(),
         theme: new ThemeData(
-          primaryColor: Color(0xfff95149),
+          primaryColor: ThemeColors.mainRed,
           textTheme: Theme.of(context).textTheme.copyWith(
                 title: new TextStyle(
                     color: Colors.black87,
@@ -57,30 +57,39 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// TODO: replace the shadow of material and container with just container in main drawer buttons, lignes dispo ... etc
 // TODO: add icons
 
 // Colors
 class ThemeColors {
-  static const mainRed = Color(0xfff95149);
+  static const Color mainRed = Color(0xfff95149);
 
-  static const complementaryBlue = Color(0xFF00CCF3);
-  static const highlightedBlue = Color(0xFFD8FAFF);
+  static const Color complementaryBlue = Color(0xFF00CCF3);
+  static const Color highlightedBlue = Color(0xFFD8FAFF);
 
-  static const analogousOrange = Color.fromARGB(255, 254, 170, 44);
-  static const highlightedOrange = Color(0xFFFFF3E0);
-  static const analogousMagenta = Color(0xFFFE2C80);
-  static const highlightedMagenta = Color(0xFFFFE4ED);
+  static const Color analogousOrange = Color.fromARGB(255, 254, 170, 44);
+  static const Color highlightedOrange = Color(0xFFFFF3E0);
+  static const Color analogousMagenta = Color(0xFFFE2C80);
+  static const Color highlightedMagenta = Color(0xFFFFE4ED);
 
-  static const lightGrey = Color(0xfff5f5f5);
-  static const mediumGrey = Color(0xff9c9c9c);
-  static const darkGrey = Color(0xff606060);
+  static const Color WhiteGrey = Color.fromARGB(255, 247, 247, 247);
+  static const Color lightGrey = Color(0xfff0f0f0);
+  static const Color mediumGrey = Color(0xff9c9c9c);
+  static const Color darkGrey = Color(0xff606060);
 
   static const Color gradientPureOrange = Color(0xFFFFAD2C);
   static const Color gradientOrange = Color(0xFFFB6145);
   static const Color gradientRed = Color(0xFFFB4F4F);
   static const Color gradientMagenta = Color(0xFFFC455C);
   static const Color gradientPureMagenta = Color(0xFFFF2C7C);
+}
+
+class ShadowColors {
+  static const Color VeryLightShadow = Color.fromARGB(10, 0, 0, 0);
+  static const Color LightShadow = Color.fromARGB(30, 0, 0, 0);
+  static const Color RegularShadow = Color.fromARGB(130, 0, 0, 0);
+
+  static const Color RedShadow = Color(0xCCf95149);
+
 }
 
 class ColorsSocial{
@@ -90,10 +99,10 @@ class ColorsSocial{
 
 //Réglages
 var VilleActuelle = 'Oran, Algérie';
-var ValeurRayon = 400.0;
+var ValeurRayon = 600.0;
 
 
-
+//User class
 class User{
   static String AdresseMail = 'ha_bouikken_bahi_amar@esi.dz';
   static String NumTel = '+213560834326';

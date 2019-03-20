@@ -24,7 +24,7 @@ class MenuOptionsState extends State<MenuOptions> {
         slivers: <Widget>[
           SliverAppBar(
             pinned: true,
-            backgroundColor: Color(0xFFFAFAFA),
+            backgroundColor: ThemeColors.WhiteGrey,
             expandedHeight: 80,
             elevation: 2,
             leading: IconButton(
@@ -170,8 +170,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12.0),
                                     child: CupertinoTextField(
-                                      decoration:
-                                          BoxDecoration(color: ThemeColors.lightGrey),
+                                      decoration: BoxDecoration(
+                                          color: ThemeColors.lightGrey),
                                       onChanged: (String value) {
                                         User.setAdresseMail(value);
                                       },
@@ -192,7 +192,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                             height: 40,
                                             decoration: BoxDecoration(
                                               border: Border.all(
-                                                  color: ThemeColors.mainRed, width: 2),
+                                                  color: ThemeColors.mainRed,
+                                                  width: 2),
                                               borderRadius:
                                                   BorderRadius.circular(100),
                                               color: Colors.white,
@@ -205,7 +206,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
-                                                      color: ThemeColors.mainRed,
+                                                      color:
+                                                          ThemeColors.mainRed,
                                                       fontFamily: 'Oxygen',
                                                       fontSize: 12),
                                                 )),
@@ -230,7 +232,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                               ),
                                               boxShadow: [
                                                 BoxShadow(
-                                                    color: Color(0xCCf95149),
+                                                    color: ShadowColors.RedShadow,
                                                     offset: Offset(0, 3),
                                                     blurRadius: 10)
                                               ],
@@ -304,8 +306,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12.0),
                                     child: CupertinoTextField(
-                                      decoration:
-                                          BoxDecoration(color: ThemeColors.lightGrey),
+                                      decoration: BoxDecoration(
+                                          color: ThemeColors.lightGrey),
                                       onChanged: (String value) {
                                         User.setNumTel(value);
                                       },
@@ -326,7 +328,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                             height: 40,
                                             decoration: BoxDecoration(
                                               border: Border.all(
-                                                  color: ThemeColors.mainRed, width: 2),
+                                                  color: ThemeColors.mainRed,
+                                                  width: 2),
                                               borderRadius:
                                                   BorderRadius.circular(100),
                                               color: Colors.white,
@@ -339,7 +342,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
-                                                      color: ThemeColors.mainRed,
+                                                      color:
+                                                          ThemeColors.mainRed,
                                                       fontFamily: 'Oxygen',
                                                       fontSize: 12),
                                                 )),
@@ -364,7 +368,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                               ),
                                               boxShadow: [
                                                 BoxShadow(
-                                                    color: Color(0xCCf95149),
+                                                    color: ShadowColors.RedShadow,
                                                     offset: Offset(0, 3),
                                                     blurRadius: 10)
                                               ],
@@ -440,8 +444,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12.0),
                                     child: CupertinoTextField(
-                                      decoration:
-                                          BoxDecoration(color: ThemeColors.lightGrey),
+                                      decoration: BoxDecoration(
+                                          color: ThemeColors.lightGrey),
                                       onChanged: (String value) {
                                         User.setNom(value);
                                       },
@@ -457,8 +461,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12.0),
                                     child: CupertinoTextField(
-                                      decoration:
-                                          BoxDecoration(color: ThemeColors.lightGrey),
+                                      decoration: BoxDecoration(
+                                          color: ThemeColors.lightGrey),
                                       onChanged: (String value) {
                                         User.setPrenom(value);
                                       },
@@ -479,7 +483,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                             height: 40,
                                             decoration: BoxDecoration(
                                               border: Border.all(
-                                                  color: ThemeColors.mainRed, width: 2),
+                                                  color: ThemeColors.mainRed,
+                                                  width: 2),
                                               borderRadius:
                                                   BorderRadius.circular(100),
                                               color: Colors.white,
@@ -492,7 +497,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
-                                                      color: ThemeColors.mainRed,
+                                                      color:
+                                                          ThemeColors.mainRed,
                                                       fontFamily: 'Oxygen',
                                                       fontSize: 12),
                                                 )),
@@ -517,7 +523,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                               ),
                                               boxShadow: [
                                                 BoxShadow(
-                                                    color: Color(0xCCf95149),
+                                                    color: ShadowColors.RedShadow,
                                                     offset: Offset(0, 3),
                                                     blurRadius: 10)
                                               ],
@@ -588,8 +594,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12.0),
                                     child: CupertinoTextField(
-                                      decoration:
-                                          BoxDecoration(color: ThemeColors.lightGrey),
+                                      decoration: BoxDecoration(
+                                          color: ThemeColors.lightGrey),
                                       onChanged: (String value) {},
                                       style:
                                           Theme.of(context).textTheme.display1,
@@ -598,14 +604,17 @@ class MenuOptionsState extends State<MenuOptions> {
 
                                   SizedBox(height: 6),
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
                                     child: Row(
                                       children: <Widget>[
                                         Text("Confirmez le mot de passe",
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .body1),
-                                        Expanded(child: SizedBox(),)
+                                        Expanded(
+                                          child: SizedBox(),
+                                        )
                                       ],
                                     ),
                                   ),
@@ -616,8 +625,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12.0),
                                     child: CupertinoTextField(
-                                      decoration:
-                                          BoxDecoration(color: ThemeColors.lightGrey),
+                                      decoration: BoxDecoration(
+                                          color: ThemeColors.lightGrey),
                                       onChanged: (String value) {},
                                       style:
                                           Theme.of(context).textTheme.display1,
@@ -636,7 +645,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                             height: 40,
                                             decoration: BoxDecoration(
                                               border: Border.all(
-                                                  color: ThemeColors.mainRed, width: 2),
+                                                  color: ThemeColors.mainRed,
+                                                  width: 2),
                                               borderRadius:
                                                   BorderRadius.circular(100),
                                               color: Colors.white,
@@ -649,7 +659,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
-                                                      color: ThemeColors.mainRed,
+                                                      color:
+                                                          ThemeColors.mainRed,
                                                       fontFamily: 'Oxygen',
                                                       fontSize: 12),
                                                 )),
@@ -674,7 +685,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                               ),
                                               boxShadow: [
                                                 BoxShadow(
-                                                    color: Color(0xCCf95149),
+                                                    color: ShadowColors.RedShadow,
                                                     offset: Offset(0, 3),
                                                     blurRadius: 10)
                                               ],
@@ -733,16 +744,25 @@ class MenuOptionsState extends State<MenuOptions> {
                     color: Colors.white,
                     splashColor: ThemeColors.highlightedBlue,
                     highlightColor: Colors.transparent,
-                    elevation: 2,
                     highlightElevation: 1,
                     child: Container(
                       margin: EdgeInsets.only(top: 12, bottom: 16),
                       child: Column(
                         children: <Widget>[
-                          Material(
+                          Container(
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                color: Colors.white,
+                                boxShadow: [
+                                  new BoxShadow(
+                                      color: ShadowColors.LightShadow,
+                                      blurRadius: 5)
+                                ]),
+                            child: Material(
                               color: Colors.white,
-                              elevation: 4,
-                              shadowColor: Color.fromARGB(130, 0, 0, 0),
+                              elevation: 3,
+                              shadowColor: ShadowColors.RegularShadow,
                               borderRadius: BorderRadius.circular(100),
                               child: Padding(
                                   padding: EdgeInsets.all(4),
@@ -750,14 +770,19 @@ class MenuOptionsState extends State<MenuOptions> {
                                     Icons.play_arrow,
                                     color: ThemeColors.complementaryBlue,
                                     size: 22,
-                                  ))),
+                                  )),
+                            ),
+                          ),
                           SizedBox(
                             height: 8,
                           ),
                           Text(
                             'Montrer une vidéo',
                             style: TextStyle(
-                                fontSize: 11, color: ThemeColors.complementaryBlue),
+                                fontSize: 12,
+                                color: ThemeColors.complementaryBlue,
+                                fontFamily: 'Oxygen',
+                                fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -782,4 +807,3 @@ class MenuOptionsState extends State<MenuOptions> {
     );
   }
 }
-

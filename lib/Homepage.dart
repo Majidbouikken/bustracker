@@ -31,7 +31,7 @@ class HomePageState extends State<HomePage> {
             child: Material(
               color: Colors.white,
               elevation: 6,
-              shadowColor: Color.fromARGB(100, 0, 0, 0),
+              shadowColor: ShadowColors.RegularShadow,
               borderRadius: BorderRadius.all(Radius.circular(50)),
               child: Row(
                 children: <Widget>[
@@ -41,7 +41,7 @@ class HomePageState extends State<HomePage> {
                         color: Colors.white,
                         boxShadow: [
                           new BoxShadow(
-                              color: Color.fromARGB(20, 0, 0, 0),
+                              color: ShadowColors.LightShadow,
                               blurRadius: 10)
                         ]),
                     child: Padding(
@@ -99,7 +99,7 @@ class HomePageState extends State<HomePage> {
       drawer: Drawer(
           elevation: 0,
           child: Container(
-            color: Color.fromARGB(255, 247, 247, 247),
+            color: ThemeColors.WhiteGrey,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
@@ -179,13 +179,13 @@ class HomePageState extends State<HomePage> {
                                     color: Colors.white,
                                     boxShadow: [
                                       new BoxShadow(
-                                          color: Color.fromARGB(10, 0, 0, 0),
+                                          color: ShadowColors.LightShadow,
                                           blurRadius: 5)
                                     ]),
                                 child: Material(
                                   color: Colors.white,
                                   elevation: 3,
-                                  shadowColor: Color.fromARGB(130, 0, 0, 0),
+                                  shadowColor: ShadowColors.RegularShadow,
                                   borderRadius: BorderRadius.circular(100),
                                   child: Padding(
                                       padding: EdgeInsets.all(4),
@@ -202,7 +202,8 @@ class HomePageState extends State<HomePage> {
                               Text(
                                 'Lignes disponibles',
                                 style: TextStyle(
-                                    fontSize: 11, color: ThemeColors.analogousOrange),
+                                    fontSize: 11, color: ThemeColors.analogousOrange, fontFamily: 'Oxygen',
+                                    fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -217,41 +218,55 @@ class HomePageState extends State<HomePage> {
                       ),
                       Expanded(
                           child: RaisedButton(
-                        color: Colors.white,
-                        splashColor: ThemeColors.highlightedMagenta,
-                        highlightColor: Colors.transparent,
-                        highlightElevation: 1,
-                        child: Container(
-                          margin: EdgeInsets.only(top: 12, bottom: 16),
-                          child: Column(
-                            children: <Widget>[
-                              Material(
-                                  color: Colors.white,
-                                  elevation: 3,
-                                  shadowColor: Color.fromARGB(130, 0, 0, 0),
-                                  borderRadius: BorderRadius.circular(100),
-                                  child: Padding(
-                                      padding: EdgeInsets.all(4),
-                                      child: Icon(
-                                        Icons.settings,
-                                        color: Color(0XFFFE2C80),
-                                        size: 22,
-                                      ))),
-                              SizedBox(
-                                height: 8,
+                            color: Colors.white,
+                            splashColor: ThemeColors.highlightedMagenta,
+                            highlightColor: Colors.transparent,
+                            highlightElevation: 1,
+                            child: Container(
+                              margin: EdgeInsets.only(top: 12, bottom: 16),
+                              child: Column(
+                                children: <Widget>[
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          new BoxShadow(
+                                              color: ShadowColors.LightShadow,
+                                              blurRadius: 5)
+                                        ]),
+                                    child: Material(
+                                      color: Colors.white,
+                                      elevation: 3,
+                                      shadowColor: ShadowColors.RegularShadow,
+                                      borderRadius: BorderRadius.circular(100),
+                                      child: Padding(
+                                          padding: EdgeInsets.all(4),
+                                          child: Icon(
+                                            Icons.settings,
+                                            color: ThemeColors.analogousMagenta,
+                                            size: 22,
+                                          )),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                  Text(
+                                    'Options',
+                                    style: TextStyle(
+                                        fontSize: 11, color: ThemeColors.analogousMagenta, fontFamily: 'Oxygen',
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                'Options',
-                                style: TextStyle(
-                                    fontSize: 11, color: Color(0XFFFE2C80)),
-                              ),
-                            ],
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pushNamed("/MenuOptions");
-                        },
-                      )),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .pushNamed("/MenuOptions");
+                            },
+                          )),
                     ],
                   ),
 
@@ -268,7 +283,7 @@ class HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         FlatButton(
-                          highlightColor: Color.fromARGB(255, 247, 247, 247),
+                          highlightColor: ThemeColors.WhiteGrey,
                           materialTapTargetSize:
                               MaterialTapTargetSize.shrinkWrap,
                           child: Row(
@@ -283,7 +298,7 @@ class HomePageState extends State<HomePage> {
                           onPressed: main,
                         ),
                         FlatButton(
-                          highlightColor: Color.fromARGB(255, 247, 247, 247),
+                          highlightColor: ThemeColors.WhiteGrey,
                           materialTapTargetSize:
                               MaterialTapTargetSize.shrinkWrap,
                           child: Row(
@@ -298,7 +313,7 @@ class HomePageState extends State<HomePage> {
                           onPressed: main,
                         ),
                         FlatButton(
-                          highlightColor: Color.fromARGB(255, 247, 247, 247),
+                          highlightColor: ThemeColors.WhiteGrey,
                           materialTapTargetSize:
                               MaterialTapTargetSize.shrinkWrap,
                           child: Row(
@@ -326,7 +341,7 @@ class HomePageState extends State<HomePage> {
                     elevation: 2,
                     margin: EdgeInsets.all(0),
                     child: FlatButton(
-                      highlightColor: Color.fromARGB(255, 247, 247, 247),
+                      highlightColor: ThemeColors.WhiteGrey,
                       splashColor: Colors.transparent,
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       child: Row(

@@ -16,7 +16,7 @@ class _MesLignesState extends State<MesLignes> {
       slivers: <Widget>[
         SliverAppBar(
           pinned: true,
-          backgroundColor: Color(0xFFFAFAFA),
+          backgroundColor: ThemeColors.WhiteGrey,
           expandedHeight: 80,
           elevation: 2,
           leading: IconButton(
@@ -64,7 +64,6 @@ List<LigneCard> ligneCards = [
       'assets/images/ligne.png'),
 ];
 
-
 // TODO: fetch a JSON file and convert it to this class, or vice versa
 class LigneCard extends StatelessWidget {
   final String Nom, Depart, Terminus, Longueur, ImagePath;
@@ -84,9 +83,10 @@ class LigneCard extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(25)),
             boxShadow: [
               //TODO: add this shadow color to the main as color variable
-              new BoxShadow(color: Color.fromARGB(10, 0, 0, 0), blurRadius: 10),
               new BoxShadow(
-                  color: Color.fromARGB(33, 0, 0, 0),
+                  color: ShadowColors.VeryLightShadow, blurRadius: 10),
+              new BoxShadow(
+                  color: ShadowColors.LightShadow,
                   offset: Offset(0, 10),
                   blurRadius: 10),
             ]),
@@ -122,7 +122,7 @@ class LigneCard extends StatelessWidget {
                                 BoxShadow(
                                   blurRadius: 4,
                                   offset: Offset(0, 2),
-                                  color: Color.fromARGB(120, 0, 0, 0),
+                                  color: ShadowColors.RegularShadow,
                                 )
                               ]),
                           child: Text(
