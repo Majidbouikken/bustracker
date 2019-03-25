@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:projet_2cp_g5/main.dart';
+import 'main.dart';
 
 class MesLignes extends StatefulWidget {
   @override
@@ -26,7 +26,8 @@ class _MesLignesState extends State<MesLignes> {
               size: 36,
             ),
             onPressed: () {
-              Navigator.of(context).pushNamed('/login');
+              Navigator.of(context)
+                  .pushNamed("/HomePage");
             },
           ),
           title: Text(
@@ -41,7 +42,6 @@ class _MesLignesState extends State<MesLignes> {
               child: Column(
                 children: ligneCards,
               )),
-
           //
         ])),
       ],
@@ -134,6 +134,7 @@ class LigneCard extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
+                      SizedBox(height: 20),
                       Text('  ' + this.Depart),
                       Text('  ' + this.Terminus)
                     ],
