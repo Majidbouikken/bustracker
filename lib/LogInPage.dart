@@ -1,19 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:projet_2cp_g5/main.dart';
+import 'main.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'Homepage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class LogInPage extends StatefulWidget {
+
   @override
-  State createState() => new LogInPageState();
+  State createState() {
+    return new LogInPageState();
+  }
 }
 
 class LogInPageState extends State<LogInPage> {
+
+  String _email,_password;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  bool validateAndSave(){
+  final form = formKey.currentState;
+  if (form.validate()){
+    form.save();
+    return true;
+  }
+    return false;
+  }
+
+  void validateAndSubmit() async {
+    if (validateAndSave()){
+      try{
+        FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: _email,
+            password: _password);
+        User.setAdresseMail(user.email);
+        Navigator.of(context)
+            .pushReplacementNamed("/HomePage");
+      }
+      catch(e){
+        print('Error: $e');
+      }
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
-        child: Column(
+        child: Form(
+            key: formKey,
+            child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
@@ -34,14 +73,20 @@ class LogInPageState extends State<LogInPage> {
                 color: lightGrey,
               ),
               child: Center(
-                child: TextField(
+                child: TextFormField(
+                  validator : (value) => value.isEmpty ? 'Adresse vide ou incorrecte' : null,
                   style: TextStyle(fontSize: 20, color: Colors.black87),
                   decoration: InputDecoration(prefixIcon: Icon(Icons.account_circle),border: InputBorder.none),
+                  onSaved: (input){
+                    setState(() {
+                      _email=input;
+                    });
+                  },
                 ),
               ),
             ),
             SizedBox(
-              height: 16,
+              height: 18,
             ),
             Container(
               width: 1080,
@@ -51,15 +96,21 @@ class LogInPageState extends State<LogInPage> {
                 color: lightGrey,
               ),
               child: Center(
-                child: TextField(
+                child: TextFormField(
+                  validator : (value) => value.isEmpty ? 'Mot de passe vide ou incorrecte' : null,
                   style: TextStyle(fontSize: 20, color: Colors.black87),
                   obscureText: true,
                   decoration: InputDecoration(prefixIcon: Icon(Icons.verified_user),border: InputBorder.none),
+                  onSaved: (input){
+                   setState(() {
+                     _password=input;
+                   });
+                  },
                 ),
               ),
             ),
             SizedBox(
-              height: 16,
+              height: 25,
             ),
             Container(
               width: 1080,
@@ -82,7 +133,7 @@ class LogInPageState extends State<LogInPage> {
               ),
               child: FlatButton(
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  onPressed: main,
+                  onPressed:  validateAndSubmit,
                   child: Text(
                     "SE CONNECTER",
                     style: new TextStyle(
@@ -113,7 +164,7 @@ class LogInPageState extends State<LogInPage> {
                         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         onPressed: main,
                         child: Text(
-                          "facebook",
+                          "Facebook",
                           style: new TextStyle(
                               color: Colors.white,
                               fontFamily: 'Oxygen',
@@ -156,8 +207,8 @@ class LogInPageState extends State<LogInPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 GestureDetector(
-                    child: Text("inscrivez-vous", style: TextStyle(
-                        color: mainRed, fontFamily: 'Montserrat', fontSize: 11)),
+                    child: Text("Inscrivez-vous", style: TextStyle(
+                        color: mainRed, fontFamily: 'Montserrat', fontSize: 11, fontStyle: FontStyle.italic)),
                     onTap: () {
                       Navigator.of(context)
                           .pushNamed("/SignUpPage");
@@ -176,8 +227,11 @@ class LogInPageState extends State<LogInPage> {
               ],
             )
           ],
+            ),
         ),
       ),
+
     );
   }
+
 }
