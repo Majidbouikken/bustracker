@@ -51,8 +51,8 @@ class MyApp extends StatelessWidget {
           "/HomePage": (BuildContext context) => new HomePage(),
           "/SignUpPage": (BuildContext context) => new SignUpPagePage(),
           "/MenuOptions": (BuildContext context) => new MenuOptions(),
-          "/MenuMesLignesDisponibles": (BuildContext context) =>
-              new MesLignes(),
+          "/MenuMesLignesDisponibles": (BuildContext context) => new MesLignes(),
+          "/LogIn": (BuildContext context) => new LogInPage(),
         });
   }
 }
@@ -76,7 +76,7 @@ var mediumGrey = Color(0xff9c9c9c);
 var darkGrey = Color(0xff606060);
 
 //Réglages
-var VilleActuelle = 'Oran, Algérie';
+var VilleActuelle = 'Alger, Algérie';
 var ValeurRayon = 400.0;
 
 class ThemeColors {
@@ -93,10 +93,12 @@ class ColorsSocial{
 }
 
 class User{
-  static String AdresseMail = 'ha_bouikken_bahi_amar@esi.dz';
-  static String NumTel = '+213560834326';
-  static String Nom = 'Bouikken';
-  static String Prenom = 'Abdelmajid';
+  static String AdresseMail ;
+  static String NumTel ;
+  static String Nom ;
+  static String Prenom;
+  static String Pass ;
+  static int Rayon ;
   // just some setters and getters
   static void setAdresseMail(String value){AdresseMail = value;}
   static String getAdresseMail(){return AdresseMail;}
@@ -106,4 +108,8 @@ class User{
   static String getNom(){return Nom;}
   static void setPrenom(String value){Prenom = value;}
   static String getPrenom(){return Prenom;}
+  static void setPass(String value){Pass = value;}
+  static String getPass(){return Pass;}
+  static void setRayon(int value){Rayon = value;}
+  static int getRayon(){return Rayon;}
 }
