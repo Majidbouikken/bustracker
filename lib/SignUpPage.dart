@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projet_2cp_g5/main.dart';
+import 'main.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'UserManagement.dart';
 
 class SignUpPagePage extends StatefulWidget {
   @override
@@ -9,66 +11,18 @@ class SignUpPagePage extends StatefulWidget {
 ///i tried to implement a stepper in the Sign Up Page for a good looking page
 
 class SignUpPageState extends State<SignUpPagePage> {
-  /*
-  int current_step = 0;
+  final _formKey = GlobalKey<FormState>();
+  String _email,_password;
 
-  List<Step> my_steps = [
-    new Step(
-      // Title of the Step
-        title: new Text("Add your name and email"),
-        // Content, it can be any widget here. Using basic Text for this example
-        content: new Column(
-          children: <Widget>[
-            Container(
-              width: 1080,
-              height: 52,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: lightGrey,
-              ),
-              child: Center(
-                child: TextField(
-                  style: TextStyle(fontSize: 24, color: Colors.black87),
-                  decoration: InputDecoration(prefixIcon: Icon(Icons.verified_user),border: InputBorder.none),
-                ),
-              ),
-            ),
-            Container(
-              width: 1080,
-              height: 52,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: lightGrey,
-              ),
-              child: Center(
-                child: TextField(
-                  style: TextStyle(fontSize: 24, color: Colors.black87),
-                  decoration: InputDecoration(prefixIcon: Icon(Icons.verified_user),border: InputBorder.none),
-                ),
-              ),
-            ),
-          ],
-        ),
-        isActive: true),
-    new Step(
-        title: new Text("Step 2"),
-        content: new Text("World!"),
-        // You can change the style of the step icon i.e number, editing, etc.
-        state: StepState.editing,
-        isActive: true),
-    new Step(
-        title: new Text("Step 3"),
-        content: new Text("Hello World!"),
-        isActive: true),
-  ];
-*/
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      key: _formKey,
       // Body
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
-        child: Column(
+        child: Form(
+          child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
@@ -79,11 +33,11 @@ class SignUpPageState extends State<SignUpPagePage> {
                   fontSize: 28),
             ),
             SizedBox(
-              height: 16,
+              height: 14,
             ),
             Container(
               width: 1080,
-              height: 52,
+              height: 42,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
                 color: lightGrey,
@@ -108,7 +62,7 @@ class SignUpPageState extends State<SignUpPagePage> {
             ),
             Container(
               width: 1080,
-              height: 52,
+              height: 42,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
                 color: lightGrey,
@@ -127,13 +81,15 @@ class SignUpPageState extends State<SignUpPagePage> {
                   ),
                 ),
               ),
+
             ),
+          //TODO : FIX THE DIMENSION FOR THE PHONE NUMBER PLACE
             SizedBox(
               height: 16,
             ),
             Container(
               width: 1080,
-              height: 52,
+              height: 42,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
                 color: lightGrey,
@@ -141,7 +97,32 @@ class SignUpPageState extends State<SignUpPagePage> {
               child: Center(
                 child: TextField(
                   onChanged: (String value) {
-                    User.setAdresseMail(value);
+                    User.setNumTel(value);
+                  },
+                  style: TextStyle(fontSize: 20, color: Colors.black87),
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.phone),
+                    border: InputBorder.none,
+                    hintText: "Numéro de téléphone",
+                    hintStyle: Theme.of(context).textTheme.display2,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Container(
+              width: 1080,
+              height: 42,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: lightGrey,
+              ),
+              child: Center(
+                child: TextField(
+                  onChanged: (String value) {
+                   _email=value;
                   },
                   style: TextStyle(fontSize: 20, color: Colors.black87),
                   decoration: InputDecoration(
@@ -158,13 +139,16 @@ class SignUpPageState extends State<SignUpPagePage> {
             ),
             Container(
               width: 1080,
-              height: 52,
+              height: 42,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
                 color: lightGrey,
               ),
               child: Center(
                 child: TextField(
+                  onChanged: (String value) {
+                    _password=value;
+                  },
                   style: TextStyle(fontSize: 20, color: Colors.black87),
                   obscureText: true,
                   decoration: InputDecoration(
@@ -181,7 +165,7 @@ class SignUpPageState extends State<SignUpPagePage> {
             ),
             Container(
               width: 1080,
-              height: 52,
+              height: 48,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
                 gradient: LinearGradient(
@@ -201,8 +185,16 @@ class SignUpPageState extends State<SignUpPagePage> {
               child: FlatButton(
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed("/HomePage");
+                    FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        email: _email,
+                        password: _password,
+                    ).then((signedInUser) {
+                      signedInUser.sendEmailVerification();
+                      UserManagement().storeNewUser(signedInUser,context);
+                    }
+                    ).catchError((e){
+                      print(e);
+                    });
                   },
                   child: Text(
                     "S'INSCRIRE",
@@ -213,6 +205,7 @@ class SignUpPageState extends State<SignUpPagePage> {
                   )),
             ),
           ],
+        ),
         ),
       ),
     );
