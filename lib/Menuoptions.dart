@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:ui' show ImageFilter;
-import 'package:projet_2cp_g5/main.dart';
+import 'main.dart';
 
 /* these variables are used to save onchange text fields values, if the confirm button is pressed,
      the true values of the settings will be affected by these guys, otherwise they'll be lost */
@@ -34,7 +34,7 @@ class MenuOptionsState extends State<MenuOptions> {
                 size: 36,
               ),
               onPressed: () {
-                Navigator.of(context).pushNamed('/login');
+                Navigator.of(context).pushNamed('/HomePage');
               },
             ),
             title: Text(
@@ -279,8 +279,6 @@ class MenuOptionsState extends State<MenuOptions> {
                                   style: TextStyle(color: Colors.black),
                                 ),
                                 Expanded(child: SizedBox()),
-                                Text(User.getNumTel(),
-                                    style: Theme.of(context).textTheme.body1),
                               ],
                             ),
                           ),
