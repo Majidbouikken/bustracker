@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:projet_2cp_g5/main.dart';
+import 'main.dart';
+import 'package:projet_2cp_g5/Menulignesdisponibles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'LogInPage.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,8 +11,10 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
+
     // TODO: implement build
     return new Scaffold(
       appBar: AppBar(
@@ -20,7 +26,7 @@ class HomePageState extends State<HomePage> {
           size: 36,
         ),
         title: Text(
-          "bustracker",
+          'BusTracker',
           style: TextStyle(color: Colors.black87, fontSize: 28),
         ),
       ),
@@ -74,7 +80,9 @@ class HomePageState extends State<HomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    IconButton(icon: Icon(Icons.map), onPressed: main),
+                    IconButton(icon: Icon(Icons.map), onPressed: (){
+
+                    }),
                     Expanded(child: SizedBox()),
                     IconButton(
                         icon: Icon(Icons.bookmark_border), onPressed: main),
@@ -135,7 +143,7 @@ class HomePageState extends State<HomePage> {
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
                                           image: AssetImage(
-                                              'assets/images/photo de profile.png'),
+                                              'assets/images/logo.png'),
                                           fit: BoxFit.cover),
                                       color: Colors.transparent,
                                       borderRadius: BorderRadius.circular(33)),
@@ -143,7 +151,7 @@ class HomePageState extends State<HomePage> {
                         SizedBox(
                           height: 24,
                         ),
-                        Text(User.getPrenom() + " " + User.getNom(),
+                 /*       Text(User.getPrenom() + " " + User.getNom(),
                             style: TextStyle(
                                 color: Colors.black,
                                 fontFamily: 'Montserrat',
@@ -153,7 +161,7 @@ class HomePageState extends State<HomePage> {
                           height: 2,
                         ),
                         Text(User.getAdresseMail(),
-                            style: Theme.of(context).textTheme.body2),
+                            style: Theme.of(context).textTheme.body2), */
                       ],
                     ),
                   ),
@@ -343,7 +351,16 @@ class HomePageState extends State<HomePage> {
                           Expanded(child: SizedBox())
                         ],
                       ),
-                      onPressed: main,
+                      onPressed: (){
+                        FirebaseAuth.instance.signOut()
+                            .then((value){
+                              Navigator.of(context).pop();
+                              Navigator.of(context).pushReplacementNamed('/LogIn');
+                        })
+                            .catchError((e){
+                              print(e);
+                        });
+                      },
                     ),
                   ),
                 ],
