@@ -14,77 +14,85 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
         home: new LogInPage(),
         theme: new ThemeData(
-          primaryColor: Color(0xfff95149),
+          primaryColor: ThemeColors.mainRed,
           textTheme: Theme.of(context).textTheme.copyWith(
-                title: new TextStyle(
-                    color: Colors.black87,
-                    fontFamily: 'Oxygen',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24),
-                body1: new TextStyle(
-                    color: mediumGrey, fontFamily: 'Oxygen', fontSize: 14),
-                body2: new TextStyle(
-                    color: mediumGrey, fontFamily: 'Montserrat', fontSize: 11),
-                headline: new TextStyle(
-                    color: Colors.black, fontFamily: 'Oxygen', fontSize: 18),
-                //
-                subhead: new TextStyle(
-                    color: mainRed,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16),
+            title: new TextStyle(
+                color: Colors.black87,
+                fontFamily: 'Oxygen',
+                fontWeight: FontWeight.bold,
+                fontSize: 24),
+            body1: new TextStyle(
+                color: ThemeColors.mediumGrey, fontFamily: 'Oxygen', fontSize: 14),
+            body2: new TextStyle(
+                color: ThemeColors.mediumGrey, fontFamily: 'Montserrat', fontSize: 11),
+            headline: new TextStyle(
+                color: Colors.black, fontFamily: 'Oxygen', fontSize: 18),
+            //
+            subhead: new TextStyle(
+                color: ThemeColors.mainRed,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold,
+                fontSize: 16),
 
-                /// i used this in Fieled Texts in TextFields
-                display1: new TextStyle(
-                    color: Colors.black87,
-                    fontFamily: 'Oxygen',
-                    fontSize: 18),
+            /// i used this in Fieled Texts in TextFields
+            display1: new TextStyle(
+                color: Colors.black87,
+                fontFamily: 'Oxygen',
+                fontSize: 18),
 
-                /// i used this in hintTexts in TextFields
-                display2: new TextStyle(
-                    color: mediumGrey,
-                    fontFamily: 'Oxygen',
-                    fontSize: 18),
-              ),
+            /// i used this in hintTexts in TextFields
+            display2: new TextStyle(
+                color: ThemeColors.mediumGrey,
+                fontFamily: 'Oxygen',
+                fontSize: 18),
+          ),
         ),
         routes: <String, WidgetBuilder>{
           "/HomePage": (BuildContext context) => new HomePage(),
           "/SignUpPage": (BuildContext context) => new SignUpPagePage(),
           "/MenuOptions": (BuildContext context) => new MenuOptions(),
           "/MenuMesLignesDisponibles": (BuildContext context) =>
-              new MesLignes(),
+          new MesLignes(),
         });
   }
 }
 
-// TODO: replace the shadow of material and container with just container in main drawer buttons, lignes dispo ... etc
 // TODO: add icons
 
 // Colors
-var mainRed = Color(0xfff95149);
-
-var complementaryBlue = Color(0xFF00CCF3);
-var highlightedBlue = Color(0xFFD8FAFF);
-
-var analogousOrange = Color.fromARGB(255, 254, 170, 44);
-var highlightedOrange = Color(0xFFFFF3E0);
-var analogousMagenta = Color(0xFFFE2C80);
-var highlightedMagenta = Color(0xFFFFE4ED);
-
-var lightGrey = Color(0xfff5f5f5);
-var mediumGrey = Color(0xff9c9c9c);
-var darkGrey = Color(0xff606060);
-
-//Réglages
-var VilleActuelle = 'Oran, Algérie';
-var ValeurRayon = 400.0;
-
 class ThemeColors {
+  static const Color mainRed = Color(0xfff95149);
+
+  static const Color complementaryBlue = Color(0xFF00CCF3);
+  static const Color highlightedBlue = Color(0xFFD8FAFF);
+
+  static const Color analogousOrange = Color.fromARGB(255, 254, 170, 44);
+  static const Color highlightedOrange = Color(0xFFFFF3E0);
+  static const Color analogousMagenta = Color(0xFFFE2C80);
+  static const Color highlightedMagenta = Color(0xFFFFE4ED);
+
+  static const Color WhiteGrey = Color.fromARGB(255, 247, 247, 247);
+  static const Color TransparentWhiteGrey = Color.fromARGB(0, 247, 247, 247);
+  static const Color lightGrey = Color(0xfff0f0f0);
+  static const Color mediumGrey = Color(0xff9c9c9c);
+  static const Color darkGrey = Color(0xff606060);
+
   static const Color gradientPureOrange = Color(0xFFFFAD2C);
+  static const Color gradientSemiOrange = Color(0xFFFC743F);
   static const Color gradientOrange = Color(0xFFFB6145);
   static const Color gradientRed = Color(0xFFFB4F4F);
   static const Color gradientMagenta = Color(0xFFFC455C);
+  static const Color gradientSemiMagenta = Color(0xFFFC4260);
   static const Color gradientPureMagenta = Color(0xFFFF2C7C);
+}
+
+class ShadowColors {
+  static const Color VeryLightShadow = Color.fromARGB(10, 0, 0, 0);
+  static const Color LightShadow = Color.fromARGB(30, 0, 0, 0);
+  static const Color RegularShadow = Color.fromARGB(130, 0, 0, 0);
+
+  static const Color RedShadow = Color(0xCCf95149);
+
 }
 
 class ColorsSocial{
@@ -92,6 +100,12 @@ class ColorsSocial{
 
 }
 
+//Réglages
+var VilleActuelle = 'Oran, Algérie';
+var ValeurRayon = 600.0;
+
+
+//User class
 class User{
   static String AdresseMail = 'ha_bouikken_bahi_amar@esi.dz';
   static String NumTel = '+213560834326';

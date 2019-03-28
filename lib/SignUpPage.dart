@@ -86,7 +86,7 @@ class SignUpPageState extends State<SignUpPagePage> {
               height: 52,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
-                color: lightGrey,
+                color: ThemeColors.lightGrey,
               ),
               child: Center(
                 child: TextField(
@@ -111,7 +111,7 @@ class SignUpPageState extends State<SignUpPagePage> {
               height: 52,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
-                color: lightGrey,
+                color: ThemeColors.lightGrey,
               ),
               child: Center(
                 child: TextField(
@@ -136,7 +136,7 @@ class SignUpPageState extends State<SignUpPagePage> {
               height: 52,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
-                color: lightGrey,
+                color: ThemeColors.lightGrey,
               ),
               child: Center(
                 child: TextField(
@@ -161,7 +161,7 @@ class SignUpPageState extends State<SignUpPagePage> {
               height: 52,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
-                color: lightGrey,
+                color: ThemeColors.lightGrey,
               ),
               child: Center(
                 child: TextField(
