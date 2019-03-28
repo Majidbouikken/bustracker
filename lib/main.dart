@@ -16,43 +16,43 @@ class MyApp extends StatelessWidget {
         theme: new ThemeData(
           primaryColor: ThemeColors.mainRed,
           textTheme: Theme.of(context).textTheme.copyWith(
-                title: new TextStyle(
-                    color: Colors.black87,
-                    fontFamily: 'Oxygen',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24),
-                body1: new TextStyle(
-                    color: ThemeColors.mediumGrey, fontFamily: 'Oxygen', fontSize: 14),
-                body2: new TextStyle(
-                    color: ThemeColors.mediumGrey, fontFamily: 'Montserrat', fontSize: 11),
-                headline: new TextStyle(
-                    color: Colors.black, fontFamily: 'Oxygen', fontSize: 18),
-                //
-                subhead: new TextStyle(
-                    color: ThemeColors.mainRed,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16),
+            title: new TextStyle(
+                color: Colors.black87,
+                fontFamily: 'Oxygen',
+                fontWeight: FontWeight.bold,
+                fontSize: 24),
+            body1: new TextStyle(
+                color: ThemeColors.mediumGrey, fontFamily: 'Oxygen', fontSize: 14),
+            body2: new TextStyle(
+                color: ThemeColors.mediumGrey, fontFamily: 'Montserrat', fontSize: 11),
+            headline: new TextStyle(
+                color: Colors.black, fontFamily: 'Oxygen', fontSize: 18),
+            //
+            subhead: new TextStyle(
+                color: ThemeColors.mainRed,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold,
+                fontSize: 16),
 
-                /// i used this in Fieled Texts in TextFields
-                display1: new TextStyle(
-                    color: Colors.black87,
-                    fontFamily: 'Oxygen',
-                    fontSize: 18),
+            /// i used this in Fieled Texts in TextFields
+            display1: new TextStyle(
+                color: Colors.black87,
+                fontFamily: 'Oxygen',
+                fontSize: 18),
 
-                /// i used this in hintTexts in TextFields
-                display2: new TextStyle(
-                    color: ThemeColors.mediumGrey,
-                    fontFamily: 'Oxygen',
-                    fontSize: 18),
-              ),
+            /// i used this in hintTexts in TextFields
+            display2: new TextStyle(
+                color: ThemeColors.mediumGrey,
+                fontFamily: 'Oxygen',
+                fontSize: 18),
+          ),
         ),
         routes: <String, WidgetBuilder>{
           "/HomePage": (BuildContext context) => new HomePage(),
           "/SignUpPage": (BuildContext context) => new SignUpPagePage(),
           "/MenuOptions": (BuildContext context) => new MenuOptions(),
           "/MenuMesLignesDisponibles": (BuildContext context) =>
-              new MesLignes(),
+          new MesLignes(),
         });
   }
 }
@@ -72,14 +72,17 @@ class ThemeColors {
   static const Color highlightedMagenta = Color(0xFFFFE4ED);
 
   static const Color WhiteGrey = Color.fromARGB(255, 247, 247, 247);
+  static const Color TransparentWhiteGrey = Color.fromARGB(0, 247, 247, 247);
   static const Color lightGrey = Color(0xfff0f0f0);
   static const Color mediumGrey = Color(0xff9c9c9c);
   static const Color darkGrey = Color(0xff606060);
 
   static const Color gradientPureOrange = Color(0xFFFFAD2C);
+  static const Color gradientSemiOrange = Color(0xFFFC743F);
   static const Color gradientOrange = Color(0xFFFB6145);
   static const Color gradientRed = Color(0xFFFB4F4F);
   static const Color gradientMagenta = Color(0xFFFC455C);
+  static const Color gradientSemiMagenta = Color(0xFFFC4260);
   static const Color gradientPureMagenta = Color(0xFFFF2C7C);
 }
 

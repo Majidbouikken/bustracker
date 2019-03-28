@@ -12,7 +12,7 @@ class HomePageState extends State<HomePage> {
     // TODO: implement build
     return new Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: ThemeColors.WhiteGrey,
         elevation: 0,
         leading: Icon(
           Icons.menu,
@@ -26,13 +26,38 @@ class HomePageState extends State<HomePage> {
       ),
       body: Stack(
         children: <Widget>[
+
+          // TODO: here the Google maps should be implemented
+          Image(image: AssetImage('assets/images/MAP.png')),
+
+          Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        ThemeColors.WhiteGrey,
+                        ThemeColors.TransparentWhiteGrey,
+                        ThemeColors.TransparentWhiteGrey,
+                        ThemeColors.TransparentWhiteGrey,
+                        ThemeColors.TransparentWhiteGrey,
+                      ]))),
+
+          /// the Current City nav bar
+
           Padding(
             padding: const EdgeInsets.only(top: 8, left: 20, right: 20),
-            child: Material(
-              color: Colors.white,
-              elevation: 6,
-              shadowColor: ShadowColors.RegularShadow,
-              borderRadius: BorderRadius.all(Radius.circular(50)),
+            child: Container(
+              height: 44,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(40),
+                  boxShadow: [
+                    BoxShadow(
+                        color: ShadowColors.LightShadow,
+                        blurRadius: 8,
+                        offset: Offset(0, 6))
+                  ]),
               child: Row(
                 children: <Widget>[
                   Container(
@@ -41,15 +66,14 @@ class HomePageState extends State<HomePage> {
                         color: Colors.white,
                         boxShadow: [
                           new BoxShadow(
-                              color: ShadowColors.LightShadow,
-                              blurRadius: 10)
+                              color: ShadowColors.LightShadow, blurRadius: 10)
                         ]),
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Icon(
                         Icons.pin_drop,
                         color: ThemeColors.mainRed,
-                        size: 24,
+                        size: 20,
                       ),
                     ),
                   ),
@@ -58,7 +82,7 @@ class HomePageState extends State<HomePage> {
                   ),
                   Text(
                     "Alger, Algérie",
-                    style: TextStyle(fontSize: 14, color: Color(0xfff95149)),
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Color(0xfff95149)),
                   )
                 ],
               ),
@@ -70,24 +94,96 @@ class HomePageState extends State<HomePage> {
           Align(
             alignment: FractionalOffset.bottomCenter,
             child: Padding(
-                padding: const EdgeInsets.all(32.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                padding: const EdgeInsets.only(bottom: 40, left: 20, right: 20),
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
                   children: <Widget>[
-                    IconButton(icon: Icon(Icons.map), onPressed: main),
-                    Expanded(child: SizedBox()),
-                    IconButton(
-                        icon: Icon(Icons.bookmark_border), onPressed: main),
-                    Expanded(child: SizedBox()),
-                    FloatingActionButton(
-                      onPressed: main,
-                      foregroundColor: ThemeColors.analogousMagenta,
-                      backgroundColor: ThemeColors.mainRed,
+                    Image(image: AssetImage('assets/images/ControllBar.png')),
+                    Container(
+                      height: 44,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.transparent,
+                          /*gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                ThemeColors.gradientOrange,
+                                ThemeColors.gradientRed,
+                                ThemeColors.gradientMagenta,
+                              ]),*/
+                          boxShadow: [
+                            BoxShadow(
+                                color: ShadowColors.RedShadow,
+                                blurRadius: 8,
+                                offset: Offset(0, 6))
+                          ]),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          IconButton(
+                              icon: Icon(
+                                Icons.favorite,
+                                color: Colors.black38,
+                                size: 20,
+                              ),
+                              highlightColor: Colors.transparent,
+                              splashColor: Colors.transparent,
+                              onPressed: () {}),
+                          IconButton(
+                              icon: Icon(
+                                Icons.flag,
+                                color: Colors.black38,
+                                size: 20,
+                              ),
+                              highlightColor: Colors.transparent,
+                              splashColor: Colors.transparent,
+                              onPressed: () {}),
+                          SizedBox(width: 46),
+                          IconButton(
+                              icon: Icon(
+                                Icons.map,
+                                color: Colors.black38,
+                                size: 20,
+                              ),
+                              highlightColor: Colors.transparent,
+                              splashColor: Colors.transparent,
+                              onPressed: () {}),
+                          IconButton(
+                              icon: Icon(
+                                Icons.bookmark,
+                                color: Colors.black38,
+                                size: 20,
+                              ),
+                              highlightColor: Colors.transparent,
+                              splashColor: Colors.transparent,
+                              onPressed: () {}),
+                        ],
+                      ),
                     ),
-                    Expanded(child: SizedBox()),
-                    IconButton(icon: Icon(Icons.pin_drop), onPressed: main),
-                    Expanded(child: SizedBox()),
-                    IconButton(icon: Icon(Icons.layers), onPressed: main),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 7.5),
+                      child: Container(
+                          height: 42,
+                          width: 42,
+                          decoration: BoxDecoration(
+                              border:
+                              Border.all(color: Colors.white, width: 3.5),
+                              borderRadius: BorderRadius.circular(40),
+                              gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [
+                                    ThemeColors.gradientSemiOrange,
+                                    ThemeColors.gradientRed,
+                                    ThemeColors.gradientSemiMagenta,
+                                  ])),
+                          child: FloatingActionButton(
+                            onPressed: main,
+                            backgroundColor: Color(0x00FFFFFF),
+                            elevation: 0,
+                          )),
+                    )
                   ],
                 )),
           )
@@ -140,10 +236,8 @@ class HomePageState extends State<HomePage> {
                                       color: Colors.transparent,
                                       borderRadius: BorderRadius.circular(33)),
                                 ))),
-                        SizedBox(
-                          height: 24,
-                        ),
                         Text(User.getPrenom() + " " + User.getNom(),
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.black,
                                 fontFamily: 'Montserrat',
@@ -153,6 +247,7 @@ class HomePageState extends State<HomePage> {
                           height: 2,
                         ),
                         Text(User.getAdresseMail(),
+                            textAlign: TextAlign.center,
                             style: Theme.of(context).textTheme.body2),
                       ],
                     ),
@@ -164,55 +259,58 @@ class HomePageState extends State<HomePage> {
                     children: <Widget>[
                       Expanded(
                           child: RaisedButton(
-                        color: Colors.white,
-                        splashColor: ThemeColors.highlightedOrange,
-                        highlightColor: Colors.transparent,
-                        highlightElevation: 1,
-                        child: Container(
-                          margin: EdgeInsets.only(top: 12, bottom: 16),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                    borderRadius:
+                            color: Colors.white,
+                            splashColor: ThemeColors.highlightedOrange,
+                            highlightColor: Colors.transparent,
+                            highlightElevation: 1,
+                            child: Container(
+                              margin: EdgeInsets.only(top: 12, bottom: 16),
+                              child: Column(
+                                children: <Widget>[
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius:
                                         BorderRadius.all(Radius.circular(20)),
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      new BoxShadow(
-                                          color: ShadowColors.LightShadow,
-                                          blurRadius: 5)
-                                    ]),
-                                child: Material(
-                                  color: Colors.white,
-                                  elevation: 3,
-                                  shadowColor: ShadowColors.RegularShadow,
-                                  borderRadius: BorderRadius.circular(100),
-                                  child: Padding(
-                                      padding: EdgeInsets.all(4),
-                                      child: Icon(
-                                        Icons.link,
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          new BoxShadow(
+                                              color: ShadowColors.LightShadow,
+                                              blurRadius: 5)
+                                        ]),
+                                    child: Material(
+                                      color: Colors.white,
+                                      elevation: 3,
+                                      shadowColor: ShadowColors.RegularShadow,
+                                      borderRadius: BorderRadius.circular(100),
+                                      child: Padding(
+                                          padding: EdgeInsets.all(4),
+                                          child: Icon(
+                                            Icons.link,
+                                            color: ThemeColors.analogousOrange,
+                                            size: 22,
+                                          )),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                  Text(
+                                    'Lignes disponibles',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 11,
                                         color: ThemeColors.analogousOrange,
-                                        size: 22,
-                                      )),
-                                ),
+                                        fontFamily: 'Oxygen',
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
                               ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Text(
-                                'Lignes disponibles',
-                                style: TextStyle(
-                                    fontSize: 11, color: ThemeColors.analogousOrange, fontFamily: 'Oxygen',
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context)
-                              .pushNamed("/MenuMesLignesDisponibles");
-                        },
-                      )),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .pushNamed("/MenuMesLignesDisponibles");
+                            },
+                          )),
                       SizedBox(
                         width: 8,
                       ),
@@ -255,16 +353,18 @@ class HomePageState extends State<HomePage> {
                                   ),
                                   Text(
                                     'Options',
+                                    textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        fontSize: 11, color: ThemeColors.analogousMagenta, fontFamily: 'Oxygen',
+                                        fontSize: 11,
+                                        color: ThemeColors.analogousMagenta,
+                                        fontFamily: 'Oxygen',
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
                             ),
                             onPressed: () {
-                              Navigator.of(context)
-                                  .pushNamed("/MenuOptions");
+                              Navigator.of(context).pushNamed("/MenuOptions");
                             },
                           )),
                     ],
@@ -285,7 +385,7 @@ class HomePageState extends State<HomePage> {
                         FlatButton(
                           highlightColor: ThemeColors.WhiteGrey,
                           materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
+                          MaterialTapTargetSize.shrinkWrap,
                           child: Row(
                             children: <Widget>[
                               Text(
@@ -300,7 +400,7 @@ class HomePageState extends State<HomePage> {
                         FlatButton(
                           highlightColor: ThemeColors.WhiteGrey,
                           materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
+                          MaterialTapTargetSize.shrinkWrap,
                           child: Row(
                             children: <Widget>[
                               Text(
@@ -315,7 +415,7 @@ class HomePageState extends State<HomePage> {
                         FlatButton(
                           highlightColor: ThemeColors.WhiteGrey,
                           materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
+                          MaterialTapTargetSize.shrinkWrap,
                           child: Row(
                             children: <Widget>[
                               Text(

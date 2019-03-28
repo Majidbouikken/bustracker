@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'dart:ui' show ImageFilter;
 import 'package:projet_2cp_g5/main.dart';
 
@@ -70,3 +71,59 @@ class MyPopupSurface extends StatelessWidget {
 }
 
 ///
+
+class MySlides extends StatelessWidget {
+  final String _message, _animation;
+
+  const MySlides(this._message, this._animation);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Column(
+      children: <Widget>[
+        Container(
+          height: 280,
+          child: Stack(
+            children: <Widget>[
+              FlareActor(
+                this._animation,
+                alignment: Alignment.center,
+                fit: BoxFit.contain,
+                animation: 'name',
+              ),
+              Container(
+                height: 280,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0x00FFFFFF),
+                          Color(0x00FFFFFF),
+                          Color(0x00FFFFFF),
+                          Color(0x00FFFFFF),
+                          Colors.white,
+                        ])),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(height: 16),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12),
+          child: Text(
+            this._message,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: ThemeColors.mediumGrey,
+                fontFamily: 'Oxygen',
+                fontSize: 18),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/**/

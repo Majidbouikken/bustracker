@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:projet_2cp_g5/main.dart';
 import 'package:projet_2cp_g5/MyWidgets.dart';
 
@@ -110,9 +111,9 @@ class MenuOptionsState extends State<MenuOptions> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
+                  const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
                   child: Text(
-                      'Modifier le rayon de la recherche pour lorum ipsum cardi le dinspiration réglages du profil',
+                      '''Modifier le rayon de la recherche pour lorum ipsum cardi le dinspiration réglages du profil''',
                       style: Theme.of(context).textTheme.body2),
                 ),
 
@@ -120,7 +121,7 @@ class MenuOptionsState extends State<MenuOptions> {
 
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   child: Text(
                     "Réglages du profil",
                     style: Theme.of(context).textTheme.headline,
@@ -134,7 +135,7 @@ class MenuOptionsState extends State<MenuOptions> {
                       margin: EdgeInsets.all(0),
                       child: FlatButton(
                           materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
+                          MaterialTapTargetSize.shrinkWrap,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 12.0, horizontal: 8),
@@ -161,7 +162,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                     child: Text(
                                       "Changez l'adresse mail",
                                       style:
-                                          Theme.of(context).textTheme.display1,
+                                      Theme.of(context).textTheme.display1,
                                     ),
                                   ),
 
@@ -176,7 +177,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                         User.setAdresseMail(value);
                                       },
                                       style:
-                                          Theme.of(context).textTheme.display1,
+                                      Theme.of(context).textTheme.display1,
                                     ),
                                   ),
                                   SizedBox(
@@ -195,19 +196,19 @@ class MenuOptionsState extends State<MenuOptions> {
                                                   color: ThemeColors.mainRed,
                                                   width: 2),
                                               borderRadius:
-                                                  BorderRadius.circular(100),
+                                              BorderRadius.circular(100),
                                               color: Colors.white,
                                             ),
                                             child: FlatButton(
                                                 materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
+                                                MaterialTapTargetSize
+                                                    .shrinkWrap,
                                                 onPressed: main,
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
                                                       color:
-                                                          ThemeColors.mainRed,
+                                                      ThemeColors.mainRed,
                                                       fontFamily: 'Oxygen',
                                                       fontSize: 12),
                                                 )),
@@ -222,7 +223,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                             height: 40,
                                             decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(100),
+                                              BorderRadius.circular(100),
                                               gradient: LinearGradient(
                                                 colors: [
                                                   ThemeColors.gradientOrange,
@@ -232,15 +233,16 @@ class MenuOptionsState extends State<MenuOptions> {
                                               ),
                                               boxShadow: [
                                                 BoxShadow(
-                                                    color: ShadowColors.RedShadow,
+                                                    color:
+                                                    ShadowColors.RedShadow,
                                                     offset: Offset(0, 3),
                                                     blurRadius: 10)
                                               ],
                                             ),
                                             child: FlatButton(
                                                 materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
+                                                MaterialTapTargetSize
+                                                    .shrinkWrap,
                                                 onPressed: main,
                                                 child: Text(
                                                   "CONFIRMER",
@@ -270,7 +272,7 @@ class MenuOptionsState extends State<MenuOptions> {
                       margin: EdgeInsets.all(0),
                       child: FlatButton(
                           materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
+                          MaterialTapTargetSize.shrinkWrap,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 12.0, horizontal: 8),
@@ -297,7 +299,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                     child: Text(
                                       "Changez le numéro du téléphone",
                                       style:
-                                          Theme.of(context).textTheme.display1,
+                                      Theme.of(context).textTheme.display1,
                                     ),
                                   ),
 
@@ -312,7 +314,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                         User.setNumTel(value);
                                       },
                                       style:
-                                          Theme.of(context).textTheme.display1,
+                                      Theme.of(context).textTheme.display1,
                                     ),
                                   ),
                                   SizedBox(
@@ -331,19 +333,19 @@ class MenuOptionsState extends State<MenuOptions> {
                                                   color: ThemeColors.mainRed,
                                                   width: 2),
                                               borderRadius:
-                                                  BorderRadius.circular(100),
+                                              BorderRadius.circular(100),
                                               color: Colors.white,
                                             ),
                                             child: FlatButton(
                                                 materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
+                                                MaterialTapTargetSize
+                                                    .shrinkWrap,
                                                 onPressed: main,
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
                                                       color:
-                                                          ThemeColors.mainRed,
+                                                      ThemeColors.mainRed,
                                                       fontFamily: 'Oxygen',
                                                       fontSize: 12),
                                                 )),
@@ -358,7 +360,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                             height: 40,
                                             decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(100),
+                                              BorderRadius.circular(100),
                                               gradient: LinearGradient(
                                                 colors: [
                                                   ThemeColors.gradientOrange,
@@ -368,15 +370,16 @@ class MenuOptionsState extends State<MenuOptions> {
                                               ),
                                               boxShadow: [
                                                 BoxShadow(
-                                                    color: ShadowColors.RedShadow,
+                                                    color:
+                                                    ShadowColors.RedShadow,
                                                     offset: Offset(0, 3),
                                                     blurRadius: 10)
                                               ],
                                             ),
                                             child: FlatButton(
                                                 materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
+                                                MaterialTapTargetSize
+                                                    .shrinkWrap,
                                                 onPressed: main,
                                                 child: Text(
                                                   "CONFIRMER",
@@ -411,7 +414,7 @@ class MenuOptionsState extends State<MenuOptions> {
                       margin: EdgeInsets.all(0),
                       child: FlatButton(
                           materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
+                          MaterialTapTargetSize.shrinkWrap,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 12.0, horizontal: 8),
@@ -436,7 +439,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                     child: Text(
                                       "Modifier le nom et le prénom",
                                       style:
-                                          Theme.of(context).textTheme.display1,
+                                      Theme.of(context).textTheme.display1,
                                     ),
                                   ),
                                   // this text field is for new Password
@@ -450,7 +453,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                         User.setNom(value);
                                       },
                                       style:
-                                          Theme.of(context).textTheme.display1,
+                                      Theme.of(context).textTheme.display1,
                                     ),
                                   ),
 
@@ -467,7 +470,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                         User.setPrenom(value);
                                       },
                                       style:
-                                          Theme.of(context).textTheme.display1,
+                                      Theme.of(context).textTheme.display1,
                                     ),
                                   ),
                                   SizedBox(
@@ -486,19 +489,19 @@ class MenuOptionsState extends State<MenuOptions> {
                                                   color: ThemeColors.mainRed,
                                                   width: 2),
                                               borderRadius:
-                                                  BorderRadius.circular(100),
+                                              BorderRadius.circular(100),
                                               color: Colors.white,
                                             ),
                                             child: FlatButton(
                                                 materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
+                                                MaterialTapTargetSize
+                                                    .shrinkWrap,
                                                 onPressed: main,
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
                                                       color:
-                                                          ThemeColors.mainRed,
+                                                      ThemeColors.mainRed,
                                                       fontFamily: 'Oxygen',
                                                       fontSize: 12),
                                                 )),
@@ -513,7 +516,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                             height: 40,
                                             decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(100),
+                                              BorderRadius.circular(100),
                                               gradient: LinearGradient(
                                                 colors: [
                                                   ThemeColors.gradientOrange,
@@ -523,15 +526,16 @@ class MenuOptionsState extends State<MenuOptions> {
                                               ),
                                               boxShadow: [
                                                 BoxShadow(
-                                                    color: ShadowColors.RedShadow,
+                                                    color:
+                                                    ShadowColors.RedShadow,
                                                     offset: Offset(0, 3),
                                                     blurRadius: 10)
                                               ],
                                             ),
                                             child: FlatButton(
                                                 materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
+                                                MaterialTapTargetSize
+                                                    .shrinkWrap,
                                                 onPressed: main,
                                                 child: Text(
                                                   "CONFIRMER",
@@ -561,7 +565,7 @@ class MenuOptionsState extends State<MenuOptions> {
                       margin: EdgeInsets.all(0),
                       child: FlatButton(
                           materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
+                          MaterialTapTargetSize.shrinkWrap,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 12.0, horizontal: 8),
@@ -586,7 +590,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                     child: Text(
                                       "Nouveau mot de passe",
                                       style:
-                                          Theme.of(context).textTheme.display1,
+                                      Theme.of(context).textTheme.display1,
                                     ),
                                   ),
                                   // this text field is for new Password
@@ -598,7 +602,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                           color: ThemeColors.lightGrey),
                                       onChanged: (String value) {},
                                       style:
-                                          Theme.of(context).textTheme.display1,
+                                      Theme.of(context).textTheme.display1,
                                     ),
                                   ),
 
@@ -629,7 +633,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                           color: ThemeColors.lightGrey),
                                       onChanged: (String value) {},
                                       style:
-                                          Theme.of(context).textTheme.display1,
+                                      Theme.of(context).textTheme.display1,
                                     ),
                                   ),
                                   SizedBox(
@@ -648,19 +652,19 @@ class MenuOptionsState extends State<MenuOptions> {
                                                   color: ThemeColors.mainRed,
                                                   width: 2),
                                               borderRadius:
-                                                  BorderRadius.circular(100),
+                                              BorderRadius.circular(100),
                                               color: Colors.white,
                                             ),
                                             child: FlatButton(
                                                 materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
+                                                MaterialTapTargetSize
+                                                    .shrinkWrap,
                                                 onPressed: main,
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
                                                       color:
-                                                          ThemeColors.mainRed,
+                                                      ThemeColors.mainRed,
                                                       fontFamily: 'Oxygen',
                                                       fontSize: 12),
                                                 )),
@@ -675,7 +679,7 @@ class MenuOptionsState extends State<MenuOptions> {
                                             height: 40,
                                             decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(100),
+                                              BorderRadius.circular(100),
                                               gradient: LinearGradient(
                                                 colors: [
                                                   ThemeColors.gradientOrange,
@@ -685,15 +689,16 @@ class MenuOptionsState extends State<MenuOptions> {
                                               ),
                                               boxShadow: [
                                                 BoxShadow(
-                                                    color: ShadowColors.RedShadow,
+                                                    color:
+                                                    ShadowColors.RedShadow,
                                                     offset: Offset(0, 3),
                                                     blurRadius: 10)
                                               ],
                                             ),
                                             child: FlatButton(
                                                 materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
+                                                MaterialTapTargetSize
+                                                    .shrinkWrap,
                                                 onPressed: main,
                                                 child: Text(
                                                   "CONFIRMER",
@@ -732,9 +737,9 @@ class MenuOptionsState extends State<MenuOptions> {
 
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
+                  const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
                   child: Text(
-                      'Voici une petite vidéo démonstrative, lorem ipsum der ricardo kaka el dorado mafia\nEt pour chaque homme une pomme\ndonc merci',
+                      '''Voici une petite vidéo démonstrative, lorem ipsum der ricardo kaka el dorado mafia et pour chaque homme une pomme donc merci''',
                       style: Theme.of(context).textTheme.body2),
                 ),
 
@@ -752,7 +757,7 @@ class MenuOptionsState extends State<MenuOptions> {
                           Container(
                             decoration: BoxDecoration(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
+                                BorderRadius.all(Radius.circular(20)),
                                 color: Colors.white,
                                 boxShadow: [
                                   new BoxShadow(
@@ -788,8 +793,62 @@ class MenuOptionsState extends State<MenuOptions> {
                       ),
                     ),
                     onPressed: () {
-                      SimpleDialog dialog = new SimpleDialog(
-                        children: <Widget>[Text("Tutorial")],
+                      MyDialog dialog = new MyDialog(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Padding(
+                              padding:
+                              const EdgeInsets.symmetric(vertical: 12.0),
+                              child: Text(
+                                "Comment utiliser le SMS?",
+                                style: Theme.of(context).textTheme.display1,
+                              ),
+                            ),
+
+                            // TODO: implement the animations in sliders
+
+                            Container(height:380,
+                                child: PageView(children: HowSMS,)),
+
+                            SizedBox(height: 24),
+
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                width: 140,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      ThemeColors.gradientOrange,
+                                      ThemeColors.gradientRed,
+                                      ThemeColors.gradientMagenta,
+                                    ],
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: ShadowColors.RedShadow,
+                                        offset: Offset(0, 3),
+                                        blurRadius: 10)
+                                  ],
+                                ),
+                                child: FlatButton(
+                                    materialTapTargetSize:
+                                    MaterialTapTargetSize.shrinkWrap,
+                                    onPressed: main,
+                                    child: Text(
+                                      "SUIVANT",
+                                      style: new TextStyle(
+                                          color: Colors.white,
+                                          fontFamily: 'Oxygen',
+                                          fontSize: 12),
+                                    )),
+                              ),
+                            ),
+                          ],
+                        ),
                       );
                       showDialog(context: context, child: dialog);
                     },
@@ -807,3 +866,11 @@ class MenuOptionsState extends State<MenuOptions> {
     );
   }
 }
+
+
+List<MySlides> HowSMS = [
+  MySlides('''Choisissez une station''', "assets/animations/tutoSMS1.flr"),
+  MySlides('''Choisissez une station''', "assets/animations/tutoSMS1.flr"),
+  MySlides('''Choisissez une station''', "assets/animations/tutoSMS1.flr"),
+
+];

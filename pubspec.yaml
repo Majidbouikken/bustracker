@@ -15,6 +15,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flare_flutter:
+      path: ../../../../SDK/flutter/packages/flare_flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -47,8 +49,9 @@ flutter:
         - asset: assets\fonts\Montserrat-Regular.ttf
 
   assets:
-    - assets/images/photo de profile.png
-    - assets/images/ligne.png
+    - assets/images/MAP.png
+    - assets/images/ControllBar.png
+    - assets/animations/tutoSMS1.flr
     #   - family: Trajan Pro
     #     fonts:
     #       - asset: fonts/TrajanPro.ttf
