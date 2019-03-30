@@ -51,6 +51,7 @@ flutter:
   assets:
     - assets/images/MAP.png
     - assets/images/ControllBar.png
+    - assets/images/photo de profile.png
     - assets/animations/tutoSMS1.flr
     #   - family: Trajan Pro
     #     fonts:

@@ -67,6 +67,8 @@ class LogInPageState extends State<LogInPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
                 gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                   colors: [
                     ThemeColors.gradientOrange,
                     ThemeColors.gradientRed,
@@ -88,7 +90,7 @@ class LogInPageState extends State<LogInPage> {
                     style: new TextStyle(
                         color: Colors.white,
                         fontFamily: 'Oxygen',
-                        fontSize: 16),
+                        fontSize: 18),
                   )),
             ),
             SizedBox(
@@ -157,17 +159,17 @@ class LogInPageState extends State<LogInPage> {
               children: <Widget>[
                 GestureDetector(
                     child: Text("inscrivez-vous", style: TextStyle(
-                        color: ThemeColors.mainRed, fontFamily: 'Montserrat', fontSize: 11)),
+                        color: ThemeColors.mainRed, fontFamily: 'Montserrat', fontSize: 12)),
                     onTap: () {
                       Navigator.of(context)
                           .pushNamed("/SignUpPage");
                     }
                 ),
                 Text("  ou  ", style: TextStyle(
-                    color: ThemeColors.mediumGrey, fontFamily: 'Montserrat', fontSize: 11),),
+                    color: ThemeColors.mediumGrey, fontFamily: 'Montserrat', fontSize: 12),),
                 GestureDetector(
                     child: Text("mot de passe oublié?", style: TextStyle(
-                        color: ThemeColors.mainRed, fontFamily: 'Montserrat', fontSize: 11),),
+                        color: ThemeColors.mainRed, fontFamily: 'Montserrat', fontSize: 12),),
                     onTap: () {
                       Navigator.of(context)
                           .pushNamed("/SignUpPage");

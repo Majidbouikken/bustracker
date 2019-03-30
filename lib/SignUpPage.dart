@@ -209,7 +209,7 @@ class SignUpPageState extends State<SignUpPagePage> {
                     style: new TextStyle(
                         color: Colors.white,
                         fontFamily: 'Oxygen',
-                        fontSize: 16),
+                        fontSize: 18),
                   )),
             ),
           ],
