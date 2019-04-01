@@ -103,13 +103,13 @@ class LigneCard extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              child: Column(
+              child: Stack(
                 children: <Widget>[
                   Row(
                     children: <Widget>[
                       Text(
                         this.Nom,
-                        style: TextStyle(color: Colors.red, fontSize: 15),
+                        style: TextStyle(color: ThemeColors.mainRed, fontSize: 18, fontFamily: "Montserrat", fontWeight: FontWeight.w700),
                       ),
                       Expanded(child: SizedBox()),
                       Container(
@@ -117,25 +117,28 @@ class LigneCard extends StatelessWidget {
                               EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Colors.white,
+                              color: ThemeColors.mainRed,
                               boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4,
                                   offset: Offset(0, 2),
-                                  color: ShadowColors.RegularShadow,
+                                  color: ShadowColors.RedShadow,
                                 )
                               ]),
                           child: Text(
                             this.Longueur,
-                            style: TextStyle(color: Colors.black, fontSize: 12),
+                            style: TextStyle(color: Colors.white, fontSize: 14, fontFamily: "Oxygen", fontWeight: FontWeight.w700),
                           )),
                     ],
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
+                      Expanded(child: SizedBox()),
                       Text('  ' + this.Depart),
-                      Text('  ' + this.Terminus)
+                      Expanded(child: SizedBox()),
+                      Text('  ' + this.Terminus),
+                      Expanded(child: SizedBox()),
                     ],
                   )
                 ],

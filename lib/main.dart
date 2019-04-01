@@ -92,6 +92,7 @@ class ShadowColors {
   static const Color RegularShadow = Color.fromARGB(130, 0, 0, 0);
 
   static const Color RedShadow = Color(0xCCf95149);
+  static const Color BlueShadow = Color(0xCC00CCF3);
 
 }
 
