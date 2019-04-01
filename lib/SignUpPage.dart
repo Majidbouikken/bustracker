@@ -11,17 +11,20 @@ class SignUpPagePage extends StatefulWidget {
 ///i tried to implement a stepper in the Sign Up Page for a good looking page
 
 class SignUpPageState extends State<SignUpPagePage> {
+
+  bool _autoValidate = false;
   final _formKey = GlobalKey<FormState>();
-  String _email,_password;
+  String _email,_password,_nom,_prenom,_mobile;
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      key: _formKey,
       // Body
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
         child: Form(
+          key: _formKey,
+          autovalidate: _autoValidate,
           child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -44,6 +47,7 @@ class SignUpPageState extends State<SignUpPagePage> {
               ),
               child: Center(
                 child: TextField(
+                  keyboardType: TextInputType.text,
                   onChanged: (String value) {
                     User.setPrenom(value);
                   },
@@ -69,6 +73,7 @@ class SignUpPageState extends State<SignUpPagePage> {
               ),
               child: Center(
                 child: TextField(
+                  keyboardType: TextInputType.text,
                   onChanged: (String value) {
                     User.setNom(value);
                   },
@@ -96,6 +101,7 @@ class SignUpPageState extends State<SignUpPagePage> {
               ),
               child: Center(
                 child: TextField(
+                  keyboardType: TextInputType.phone,
                   onChanged: (String value) {
                     User.setNumTel(value);
                   },
@@ -121,6 +127,7 @@ class SignUpPageState extends State<SignUpPagePage> {
               ),
               child: Center(
                 child: TextField(
+                  keyboardType: TextInputType.emailAddress,
                   onChanged: (String value) {
                    _email=value;
                   },
@@ -147,6 +154,7 @@ class SignUpPageState extends State<SignUpPagePage> {
               child: Center(
                 child: TextField(
                   onChanged: (String value) {
+                    User.setPass(value);
                     _password=value;
                   },
                   style: TextStyle(fontSize: 20, color: Colors.black87),
@@ -209,5 +217,56 @@ class SignUpPageState extends State<SignUpPagePage> {
         ),
       ),
     );
+  }
+
+  void _validateInputs() {
+    if (_formKey.currentState.validate()) {
+//    If all data are correct then save data to out variables
+      _formKey.currentState.save();
+    } else {
+//    If all data are not valid then start auto validation.
+      setState(() {
+        _autoValidate = true;
+      });
+    }
+  }
+
+  String validateNom(String value)  {
+    if (value.length < 3)
+      return 'Le nom doit contenir au moins 3 caractères';
+    else
+      return null;
+  }
+
+  String validatePrenom(String value) {
+    if (value.length < 3)
+      return 'Le prénom doit contenir au moins 3 caractères';
+    else
+      return null;
+  }
+
+  String validateMobile(String value) {
+// Indian Mobile number are of 10 digit only
+    if (value.length != 10)
+      return 'Le  numéro doit contenir 10 caractères.';
+    else
+      return null;
+  }
+
+  String validateEmail(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return 'Entrez une adresse valide';
+    else
+      return null;
+  }
+
+  String validatePass(String value) {
+    if (value.length < 6)
+      return 'Mot de passe incorrecte.';
+    else
+      return null;
   }
 }
