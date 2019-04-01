@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:ui' show ImageFilter;
 import 'main.dart';
+import 'UserManagement.dart';
+
 
 /* these variables are used to save onchange text fields values, if the confirm button is pressed,
      the true values of the settings will be affected by these guys, otherwise they'll be lost */
@@ -16,6 +18,7 @@ class MenuOptions extends StatefulWidget {
 // TODO: add descriptions and texts as variables
 
 class MenuOptionsState extends State<MenuOptions> {
+  String _email,_pass,_nom,_prenom,_numtel;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -88,20 +91,21 @@ class MenuOptionsState extends State<MenuOptions> {
                                   style: Theme.of(context).textTheme.subhead),
                               Expanded(child: SizedBox()),
                               Text(
-                                '${ValeurRayon.toInt()}m',
+                                '${User.getRayon().toInt()}m',
                                 style: TextStyle(color: Colors.black),
                               )
                             ],
                           ),
                           SizedBox(height: 8),
                           Slider(
-                            min: 400,
+                            min: 250,
                             max: 1000,
                             inactiveColor: lightGrey,
                             onChanged: (newRating) {
-                              setState(() => ValeurRayon = newRating);
+                              setState(() => User.setRayon(newRating) );
+                              UserManagement().updateRayon(User.getDocID(), User.getRayon());
                             },
-                            value: ValeurRayon,
+                            value: User.getRayon(),
                           ),
                         ],
                       ),
@@ -165,18 +169,21 @@ class MenuOptionsState extends State<MenuOptions> {
                                     ),
                                   ),
 
-                                  // this text field is for the NumTel
+                                  // this text field is for the Mail adress
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12.0),
                                     child: CupertinoTextField(
+                                      keyboardType: TextInputType.emailAddress,
                                       decoration:
-                                          BoxDecoration(color: lightGrey),
+                                          BoxDecoration(color: lightGrey, borderRadius: BorderRadius.circular(8)),
                                       onChanged: (String value) {
-                                        User.setAdresseMail(value);
+                                        _email=value;
                                       },
                                       style:
                                           Theme.of(context).textTheme.display1,
+                                      controller: TextEditingController(text: User.getAdresseMail()),
+
                                     ),
                                   ),
                                   SizedBox(
@@ -201,7 +208,10 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 materialTapTargetSize:
                                                     MaterialTapTargetSize
                                                         .shrinkWrap,
-                                                onPressed: main,
+                                                onPressed: (){
+                                                  Navigator.of(context)
+                                                      .pushNamed("/MenuOptions");
+                                                },
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
@@ -239,7 +249,12 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 materialTapTargetSize:
                                                     MaterialTapTargetSize
                                                         .shrinkWrap,
-                                                onPressed: main,
+                                                onPressed: (){
+                                                  UserManagement().updateMail(User.getDocID(), User.getAdresseMail(),_email,User.getPass());
+                                                  User.setAdresseMail(_email);
+                                                  Navigator.of(context)
+                                                      .pushReplacementNamed("/MenuOptions");
+                                                },
                                                 child: Text(
                                                   "CONFIRMER",
                                                   style: new TextStyle(
@@ -279,6 +294,8 @@ class MenuOptionsState extends State<MenuOptions> {
                                   style: TextStyle(color: Colors.black),
                                 ),
                                 Expanded(child: SizedBox()),
+                                Text(User.getNumTel(),
+                                    style: Theme.of(context).textTheme.body1),
                               ],
                             ),
                           ),
@@ -305,10 +322,11 @@ class MenuOptionsState extends State<MenuOptions> {
                                       decoration:
                                           BoxDecoration(color: lightGrey),
                                       onChanged: (String value) {
-                                        User.setNumTel(value);
+                                        _numtel=value;
                                       },
                                       style:
                                           Theme.of(context).textTheme.display1,
+                                      controller: TextEditingController(text: User.getNumTel()),
                                     ),
                                   ),
                                   SizedBox(
@@ -333,7 +351,10 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 materialTapTargetSize:
                                                     MaterialTapTargetSize
                                                         .shrinkWrap,
-                                                onPressed: main,
+                                                onPressed: (){
+                                                  Navigator.of(context)
+                                                      .pushReplacementNamed("/MenuOptions");
+                                                },
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
@@ -371,7 +392,12 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 materialTapTargetSize:
                                                     MaterialTapTargetSize
                                                         .shrinkWrap,
-                                                onPressed: main,
+                                                onPressed: (){
+                                                  User.setNumTel(_numtel);
+                                                  UserManagement().updateNumTel(User.getDocID(), User.getNumTel());
+                                                  Navigator.of(context)
+                                                      .pushReplacementNamed("/MenuOptions");
+                                                },
                                                 child: Text(
                                                   "CONFIRMER",
                                                   style: new TextStyle(
@@ -441,10 +467,12 @@ class MenuOptionsState extends State<MenuOptions> {
                                       decoration:
                                           BoxDecoration(color: lightGrey),
                                       onChanged: (String value) {
-                                        User.setNom(value);
+                                       _nom=value;
                                       },
                                       style:
                                           Theme.of(context).textTheme.display1,
+                                      controller: TextEditingController(text: User.getNom()),
+
                                     ),
                                   ),
 
@@ -458,10 +486,11 @@ class MenuOptionsState extends State<MenuOptions> {
                                       decoration:
                                           BoxDecoration(color: lightGrey),
                                       onChanged: (String value) {
-                                        User.setPrenom(value);
+                                        _prenom=value;
                                       },
                                       style:
                                           Theme.of(context).textTheme.display1,
+                                      controller: TextEditingController(text: User.getPrenom()),
                                     ),
                                   ),
                                   SizedBox(
@@ -486,7 +515,10 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 materialTapTargetSize:
                                                     MaterialTapTargetSize
                                                         .shrinkWrap,
-                                                onPressed: main,
+                                                onPressed: (){
+                                                  Navigator.of(context)
+                                                      .pushReplacementNamed("/MenuOptions");
+                                                },
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
@@ -524,7 +556,14 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 materialTapTargetSize:
                                                     MaterialTapTargetSize
                                                         .shrinkWrap,
-                                                onPressed: main,
+                                                onPressed: (){
+                                                  User.setNom(_nom);
+                                                  UserManagement().updateNom(User.getDocID(), User.getNom());
+                                                  User.setPrenom(_prenom);
+                                                  UserManagement().updatePrenom(User.getDocID(), User.getPrenom());
+                                                  Navigator.of(context)
+                                                      .pushReplacementNamed("/MenuOptions");
+                                                },
                                                 child: Text(
                                                   "CONFIRMER",
                                                   style: new TextStyle(
@@ -588,9 +627,12 @@ class MenuOptionsState extends State<MenuOptions> {
                                     child: CupertinoTextField(
                                       decoration:
                                           BoxDecoration(color: lightGrey),
-                                      onChanged: (String value) {},
+                                      onChanged: (String value) {
+                                        _pass=value;
+                                      },
                                       style:
                                           Theme.of(context).textTheme.display1,
+                                      obscureText: true,
                                     ),
                                   ),
 
@@ -643,7 +685,10 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 materialTapTargetSize:
                                                     MaterialTapTargetSize
                                                         .shrinkWrap,
-                                                onPressed: main,
+                                                onPressed: (){
+                                                  Navigator.of(context)
+                                                      .pushReplacementNamed("/MenuOptions");
+                                                },
                                                 child: Text(
                                                   "ANNULER",
                                                   style: new TextStyle(
@@ -681,7 +726,12 @@ class MenuOptionsState extends State<MenuOptions> {
                                                 materialTapTargetSize:
                                                     MaterialTapTargetSize
                                                         .shrinkWrap,
-                                                onPressed: main,
+                                                onPressed: (){
+                                                  UserManagement().updatePass(User.getDocID(), User.getAdresseMail(),_pass,User.getPass());
+                                                  User.setPass(_pass);
+                                                  Navigator.of(context)
+                                                      .pushReplacementNamed("/MenuOptions");
+                                                },
                                                 child: Text(
                                                   "CONFIRMER",
                                                   style: new TextStyle(
