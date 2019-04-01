@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'Homepage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 class LogInPage extends StatefulWidget {
 
@@ -18,6 +18,14 @@ class LogInPageState extends State<LogInPage> {
   String _email,_password;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  //Google Sign in
+
+  GoogleSignIn googleAuth = new GoogleSignIn();
+
+  //Facebook Sign in
+
+  FacebookLogin fblogin = new FacebookLogin();
+
   bool validateAndSave(){
   final form = formKey.currentState;
   if (form.validate()){
@@ -28,12 +36,44 @@ class LogInPageState extends State<LogInPage> {
   }
 
   void validateAndSubmit() async {
+
+    CircularProgressIndicator();
     if (validateAndSave()){
+
       try{
+
         FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: _email,
             password: _password);
+
+        // Retrieving User's DATA
         User.setAdresseMail(user.email);
+        User.setID(user.uid);
+
+        var Nom = await Firestore.instance.collection('users').where('User_ID',isEqualTo: user.uid).getDocuments();
+        String nom = Nom.documents[0].data['Nom'];
+        User.setNom(nom);
+
+        var Prenom = await Firestore.instance.collection('users').where('User_ID',isEqualTo: user.uid).getDocuments();
+        String prenom = Prenom.documents[0].data['Prenom'];
+        User.setPrenom(prenom);
+
+        var Numtel = await Firestore.instance.collection('users').where('User_ID',isEqualTo: user.uid).getDocuments();
+        String numero = Numtel.documents[0].data['NumTel'];
+        User.setNumTel(numero);
+
+        var Rayon = await Firestore.instance.collection('users').where('User_ID', isEqualTo: user.uid).getDocuments();
+        double rayon = Rayon.documents[0].data['RayonActuel'];
+        User.setRayon(rayon);
+
+        var DocRef = await Firestore.instance.collection('users').where('User_ID', isEqualTo: user.uid).getDocuments();
+        String docref = DocRef.documents[0].data['DocID'];
+        User.setDocID(docref);
+
+        var Pass = await Firestore.instance.collection('users').where('User_ID', isEqualTo: user.uid).getDocuments();
+        String password = Pass.documents[0].data['Password'];
+        User.setPass(password);
+
         Navigator.of(context)
             .pushReplacementNamed("/HomePage");
       }
@@ -70,11 +110,20 @@ class LogInPageState extends State<LogInPage> {
               height: 52,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
-                color: lightGrey,
+                color: Colors.grey[200],
               ),
               child: Center(
                 child: TextFormField(
-                  validator : (value) => value.isEmpty ? 'Adresse vide ou incorrecte' : null,
+                  keyboardType: TextInputType.emailAddress,
+                  validator : (value) {
+                    Pattern pattern =
+                        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                    RegExp regex = new RegExp(pattern);
+                    if (!regex.hasMatch(value))
+                      return 'Entrez une adresse valide!';
+                    else
+                      return null;
+                  },
                   style: TextStyle(fontSize: 20, color: Colors.black87),
                   decoration: InputDecoration(prefixIcon: Icon(Icons.account_circle),border: InputBorder.none),
                   onSaved: (input){
@@ -93,11 +142,16 @@ class LogInPageState extends State<LogInPage> {
               height: 52,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
-                color: lightGrey,
+                color: Colors.grey[200],
               ),
               child: Center(
                 child: TextFormField(
-                  validator : (value) => value.isEmpty ? 'Mot de passe vide ou incorrecte' : null,
+                  validator : (value)  {
+                    if (value.length < 6)
+                      return 'Mot de passe incorrecte';
+                    else
+                      return null;
+                  },
                   style: TextStyle(fontSize: 20, color: Colors.black87),
                   obscureText: true,
                   decoration: InputDecoration(prefixIcon: Icon(Icons.verified_user),border: InputBorder.none),
@@ -162,7 +216,39 @@ class LogInPageState extends State<LogInPage> {
                     ),
                     child: FlatButton(
                         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        onPressed: main,
+                        onPressed: (){
+                           fblogin.logInWithReadPermissions(['email','public_profile'])
+                              .then((result){
+                                switch (result.status){
+                                  case FacebookLoginStatus.loggedIn:
+                                    print('EEEEEEEEE');
+                                    FirebaseAuth.instance.signInWithFacebook(
+                                        accessToken: result.accessToken.token,
+                                    )
+                            .then((signedInUser){
+                                      User.setNom(signedInUser.displayName);
+                                      User.setPrenom('');
+                                      User.setNumTel('');
+                                      User.setAdresseMail(signedInUser.email);
+                                      User.setRayon(300.0);
+                                      User.setID('');
+                                      User.setDocID('');
+                                      Navigator.of(context).pushReplacementNamed('/HomePage');
+                                    }).catchError((e){
+                                      print(e);
+                                    }); break;
+                                  case FacebookLoginStatus.cancelledByUser:
+                                  debugPrint("Facebook Login Canceled!");
+                                      break;
+                                    case FacebookLoginStatus.error:
+                                      debugPrint("Facebook Login Error!" + result.toString());
+                                      break;
+                                    }
+                              })
+                              .catchError((e){
+                            print(e);
+                          });
+                        },
                         child: Text(
                           "Facebook",
                           style: new TextStyle(
@@ -188,7 +274,31 @@ class LogInPageState extends State<LogInPage> {
                     ),
                     child: FlatButton(
                         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        onPressed: main,
+                        onPressed: (){
+                          googleAuth.signIn().then((result){
+                            result.authentication.then((googleKey){
+                            FirebaseAuth.instance.signInWithGoogle(
+                                idToken: googleKey.idToken,
+                                accessToken: googleKey.accessToken
+                            ).then((signedInUser){
+                                User.setNom(signedInUser.displayName);
+                                User.setPrenom('');
+                                User.setNumTel('');
+                                User.setAdresseMail(signedInUser.email);
+                                User.setRayon(300.0);
+                                User.setID('');
+                                User.setDocID('');
+                                Navigator.of(context).pushReplacementNamed('/HomePage');
+                            }).catchError((e){
+                              print(e);
+                            });
+                            }).catchError((e){
+                              print(e);
+                            });
+                          }).catchError((e){
+                            print(e);
+                          });
+                        },
                         child: Text(
                           "Google",
                           style: new TextStyle(
