@@ -53,6 +53,8 @@ class MyApp extends StatelessWidget {
           "/MenuOptions": (BuildContext context) => new MenuOptions(),
           "/MenuMesLignesDisponibles": (BuildContext context) => new MesLignes(),
           "/LogIn": (BuildContext context) => new LogInPage(),
+          "/Stations": (BuildContext context) => new StationList(),
+          "/Lignes": (BuildContext context) => new LigneList(),
         });
   }
 }
@@ -75,9 +77,29 @@ var lightGrey = Color(0xfff5f5f5);
 var mediumGrey = Color(0xff9c9c9c);
 var darkGrey = Color(0xff606060);
 
+var WhiteGrey = Color.fromARGB(255, 247, 247, 247);
+var TransparentWhiteGrey = Color.fromARGB(0, 247, 247, 247);
+var gradientPureOrange = Color(0xFFFFAD2C);
+var gradientSemiOrange = Color(0xFFFC743F);
+var gradientOrange = Color(0xFFFB6145);
+var gradientRed = Color(0xFFFB4F4F);
+var gradientMagenta = Color(0xFFFC455C);
+var gradientSemiMagenta = Color(0xFFFC4260);
+var gradientPureMagenta = Color(0xFFFF2C7C);
+
+
+
+class ShadowColors {
+  static const Color VeryLightShadow = Color.fromARGB(10, 0, 0, 0);
+  static const Color LightShadow = Color.fromARGB(30, 0, 0, 0);
+  static const Color RegularShadow = Color.fromARGB(130, 0, 0, 0);
+
+  static const Color RedShadow = Color(0xCCf95149);
+
+}
+
 //Réglages
 var VilleActuelle = 'Alger, Algérie';
-var ValeurRayon = 400.0;
 
 class ThemeColors {
   static const Color gradientPureOrange = Color(0xFFFFAD2C);
@@ -98,10 +120,14 @@ class User{
   static String Nom ;
   static String Prenom;
   static String Pass ;
-  static int Rayon ;
+  static double Rayon ;
+  static String ID;
+  static String DocID;
   // just some setters and getters
   static void setAdresseMail(String value){AdresseMail = value;}
   static String getAdresseMail(){return AdresseMail;}
+  static void setID(String value){ID = value;}
+  static String getID(){return ID;}
   static void setNumTel(String value){NumTel = value;}
   static String getNumTel(){return NumTel;}
   static void setNom(String value){Nom = value;}
@@ -110,6 +136,8 @@ class User{
   static String getPrenom(){return Prenom;}
   static void setPass(String value){Pass = value;}
   static String getPass(){return Pass;}
-  static void setRayon(int value){Rayon = value;}
-  static int getRayon(){return Rayon;}
+  static void setRayon(double value){Rayon = value;}
+  static double getRayon(){return Rayon;}
+  static void setDocID(String value){DocID = value;}
+  static String getDocID(){return DocID;}
 }
