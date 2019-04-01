@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'main.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MesLignes extends StatefulWidget {
   @override
@@ -12,40 +12,27 @@ class _MesLignesState extends State<MesLignes> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
-        body: new CustomScrollView(
-      slivers: <Widget>[
-        SliverAppBar(
-          pinned: true,
-          backgroundColor: Color(0xFFFAFAFA),
-          expandedHeight: 80,
-          elevation: 2,
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.black87,
-              size: 36,
-            ),
-            onPressed: () {
-              Navigator.of(context)
-                  .pushNamed("/HomePage");
-            },
+      appBar: new AppBar(
+        backgroundColor: Color(0xFFFAFAFA),
+        elevation: 2,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black87,
+            size: 25,
           ),
-          title: Text(
-            "Lignes disponibles",
-            style: Theme.of(context).textTheme.title,
-          ),
+          onPressed: () {
+            Navigator.of(context)
+                .pushNamed("/HomePage");
+          },
         ),
-        SliverList(
-            delegate: SliverChildListDelegate([
-          Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Column(
-                children: ligneCards,
-              )),
-          //
-        ])),
-      ],
-    ));
+        title: Text(
+          "Lignes disponibles",
+          style: Theme.of(context).textTheme.title,
+        ),
+      ),
+        body: LigneList()
+    );
   }
 }
 
@@ -145,6 +132,106 @@ class LigneCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+
+class LigneList extends StatefulWidget {
+  @override
+  _LigneListState createState() => _LigneListState();
+}
+
+class _LigneListState extends State<LigneList> {
+
+  Future getLines() async {
+    var firestore = Firestore.instance;
+
+    QuerySnapshot qn = await firestore.collection("lignes").getDocuments();
+    return qn.documents;
+  }
+  
+  navigateToDetail(DocumentSnapshot post){
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> StationList(post: post,)));
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: FutureBuilder(
+          future: getLines(),
+            builder: (_,snapshot){
+              if(snapshot.data==null)
+                {
+                  return CircularProgressIndicator();
+                }
+                else {
+                  return ListView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (_,index){
+                      return ListTile(
+                        title: Text(snapshot.data[index].data["direction"]),
+                        subtitle: Text('Nombre d arrets : ' +snapshot.data[index].data["nb_arrets"].toString()),
+                        onTap: () => navigateToDetail(snapshot.data[index]),
+                      );
+                  });
+              }
+            }),
+    );
+  }
+}
+
+class StationList extends StatefulWidget {
+
+  final DocumentSnapshot post;
+
+  StationList({this.post});
+
+
+  @override
+  _StationListState createState() => _StationListState();
+}
+
+class _StationListState extends State<StationList> {
+
+  Future getStations(DocumentSnapshot post) async {
+    var firestore = Firestore.instance;
+
+    QuerySnapshot qn = await firestore.collection("/lignes/" + post.documentID +  "/arrets de bus").getDocuments();
+
+    return qn.documents;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: new AppBar(
+        backgroundColor: Color(0xFFFAFAFA),
+        elevation: 2,
+        title: Text(widget.post.data["direction"],
+          style: TextStyle(fontSize: 22,color: Colors.black),
+      ),
+      ),
+    body: Center(
+      child: FutureBuilder(
+          future:  getStations(widget.post),
+          builder: (_,snapshot){
+            if(snapshot.data==null)
+            {
+              return CircularProgressIndicator();
+            }
+            else {
+              return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (_,index){
+                    return ListTile(
+                      title: Text(snapshot.data[index].data["nom"]),
+                      subtitle: Text('ID : ' +snapshot.data[index].data["arretID"].toString()),
+                    );
+                  });
+            }
+          }),
+    )
     );
   }
 }
