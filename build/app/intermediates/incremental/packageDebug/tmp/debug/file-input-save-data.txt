@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Apr 02 17:37:16 WAT 2019
+#Tue Apr 02 20:07:41 WAT 2019
 17.baseType=DIRECTORY
 4.path=flutter_assets/assets/images/photo%20de%20profile.png
 8.set=ASSET
@@ -33,7 +33,7 @@ count=19
 8.base=C\:\\Users\\Abdul Majid\\AndroidStudioProjects\\Projet_2cp_g5\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 15.path=flutter_assets/FontManifest.json
 14.baseType=DIRECTORY
-17.base=C\:\\Users\\Abdul Majid\\AndroidStudioProjects\\Projet_2cp_g5\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+17.base=C\:\\Users\\Abdul Majid\\AndroidStudioProjects\\Projet_2cp_G5\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 10.base=C\:\\Users\\Abdul Majid\\AndroidStudioProjects\\Projet_2cp_g5\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 7.path=lib/armeabi-v7a/libflutter.so
 16.baseType=DIRECTORY
@@ -49,14 +49,14 @@ count=19
 16.path=flutter_assets/vm_snapshot_data
 18.base=C\:\\Users\\Abdul Majid\\AndroidStudioProjects\\Projet_2cp_g5\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 5.baseType=DIRECTORY
-11.base=C\:\\Users\\Abdul Majid\\AndroidStudioProjects\\Projet_2cp_g5\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+11.base=C\:\\Users\\Abdul Majid\\AndroidStudioProjects\\Projet_2cp_G5\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 8.path=flutter_assets/AssetManifest.json
 17.path=flutter_assets/assets/animations/tutoSMS1.flr
 7.baseType=DIRECTORY
-3.base=C\:\\Users\\Abdul Majid\\AndroidStudioProjects\\Projet_2cp_g5\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+3.base=C\:\\Users\\Abdul Majid\\AndroidStudioProjects\\Projet_2cp_G5\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 10.path=flutter_assets/kernel_blob.bin
 13.set=NATIVE_RESOURCE
-2.path=flutter_assets/assets/images/ControllBar.png
+2.path=flutter_assets/assets%5Cfonts%5CMontserrat-Regular.ttf
 9.baseType=DIRECTORY
 18.set=NATIVE_RESOURCE
 12.base=C\:\\Users\\Abdul Majid\\AndroidStudioProjects\\Projet_2cp_g5\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
@@ -66,7 +66,7 @@ count=19
 4.base=C\:\\Users\\Abdul Majid\\AndroidStudioProjects\\Projet_2cp_g5\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 11.path=flutter_assets/assets/images/MAP.png
 9.set=ASSET
-3.path=flutter_assets/assets%5Cfonts%5CMontserrat-Regular.ttf
+3.path=flutter_assets/assets/images/ControllBar.png
 12.set=ASSET
 11.baseType=DIRECTORY
 0.baseType=DIRECTORY

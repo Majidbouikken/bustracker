@@ -1,4 +1,4 @@
-#Tue Apr 02 17:37:06 WAT 2019
-base.0=C\:\\Users\\Abdul Majid\\AndroidStudioProjects\\Projet_2cp_g5\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
+#Tue Apr 02 20:07:40 WAT 2019
+base.0=C\:\\Users\\Abdul Majid\\AndroidStudioProjects\\Projet_2cp_G5\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

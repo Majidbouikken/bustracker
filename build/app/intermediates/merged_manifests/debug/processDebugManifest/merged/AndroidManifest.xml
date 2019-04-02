@@ -26,6 +26,10 @@
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
         android:label="projet_2cp_g5" >
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBYubetny_VuWzLdpDfy453eT6Ee_NUCVs" />
+
         <activity
             android:name="com.example.projet2cpg5.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
