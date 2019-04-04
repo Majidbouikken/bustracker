@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:projet_2cp_g5/main.dart';
 
 class HomePage extends StatefulWidget {
@@ -27,6 +28,7 @@ class HomePageState extends State<HomePage> {
       body: Stack(
         children: <Widget>[
           // TODO: here the Google maps should be implemented
+          _googleMap(context),
 
           Container(
               decoration: BoxDecoration(
@@ -79,7 +81,7 @@ class HomePageState extends State<HomePage> {
                     width: 20,
                   ),
                   Text(
-                    "Alger, Algérie",
+                    "Oran, Algérie",
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -466,6 +468,33 @@ class HomePageState extends State<HomePage> {
               ),
             ),
           )),
+    );
+  }
+
+  Widget _googleMap(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      child: GoogleMap(
+        mapType: MapType.normal,
+        initialCameraPosition:
+            CameraPosition(target: LatLng(35.696223, -0.647417), zoom: 14),
+        markers: {
+      Marker(
+      markerId: MarkerId('MyPosition'),
+      icon: BitmapDescriptor.fromAsset("assets/MapElements/MarkerBus.png"),
+      position: LatLng(35.696023, -0.652017)),
+      Marker(
+      markerId: MarkerId('YourPosition'),
+      icon: BitmapDescriptor.fromAsset("assets/MapElements/MarkerBus.png"),
+      position: LatLng(35.706223, -0.647417)),
+      Marker(
+      markerId: MarkerId('Tu'),
+      icon: BitmapDescriptor.fromAsset("assets/MapElements/MarkerBus.png"),
+      position: LatLng(35.699523, -0.641417)),
+        },
+        onMapCreated: (GoogleMapController controller) {},
+      ),
     );
   }
 }
