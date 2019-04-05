@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:projet_2cp_g5/main.dart';
 import 'package:projet_2cp_g5/MyWidgets.dart';
@@ -770,11 +771,11 @@ class MenuOptionsState extends State<MenuOptions> {
                               shadowColor: ShadowColors.RegularShadow,
                               borderRadius: BorderRadius.circular(100),
                               child: Padding(
-                                  padding: EdgeInsets.all(4),
+                                  padding: EdgeInsets.only(top: 8, bottom: 8, right: 6, left: 10),
                                   child: Icon(
-                                    Icons.play_arrow,
+                                    FontAwesomeIcons.play,
                                     color: ThemeColors.complementaryBlue,
-                                    size: 22,
+                                    size: 14,
                                   )),
                             ),
                           ),

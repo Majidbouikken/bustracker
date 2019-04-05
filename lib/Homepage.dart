@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:projet_2cp_g5/main.dart';
 
@@ -8,6 +9,8 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  GoogleMapController myController;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -16,9 +19,9 @@ class HomePageState extends State<HomePage> {
         backgroundColor: ThemeColors.WhiteGrey,
         elevation: 0,
         leading: Icon(
-          Icons.menu,
+          FontAwesomeIcons.bars,
           color: Colors.black87,
-          size: 36,
+          size: 28,
         ),
         title: Text(
           "bustracker",
@@ -71,7 +74,7 @@ class HomePageState extends State<HomePage> {
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Icon(
-                        Icons.pin_drop,
+                        FontAwesomeIcons.mapMarkerAlt,
                         color: ThemeColors.mainRed,
                         size: 20,
                       ),
@@ -83,7 +86,7 @@ class HomePageState extends State<HomePage> {
                   Text(
                     "Oran, Algérie",
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
                         color: Color(0xfff95149)),
                   )
@@ -126,7 +129,7 @@ class HomePageState extends State<HomePage> {
                         children: <Widget>[
                           IconButton(
                               icon: Icon(
-                                Icons.favorite,
+                                FontAwesomeIcons.solidHeart,
                                 color: Colors.black38,
                                 size: 20,
                               ),
@@ -135,7 +138,7 @@ class HomePageState extends State<HomePage> {
                               onPressed: () {}),
                           IconButton(
                               icon: Icon(
-                                Icons.flag,
+                                FontAwesomeIcons.bus,
                                 color: Colors.black38,
                                 size: 20,
                               ),
@@ -145,7 +148,7 @@ class HomePageState extends State<HomePage> {
                           SizedBox(width: 46),
                           IconButton(
                               icon: Icon(
-                                Icons.map,
+                                FontAwesomeIcons.locationArrow,
                                 color: Colors.black38,
                                 size: 20,
                               ),
@@ -154,24 +157,30 @@ class HomePageState extends State<HomePage> {
                               onPressed: () {}),
                           IconButton(
                               icon: Icon(
-                                Icons.bookmark,
+                                FontAwesomeIcons.layerGroup,
                                 color: Colors.black38,
                                 size: 20,
                               ),
                               highlightColor: Colors.transparent,
                               splashColor: Colors.transparent,
-                              onPressed: () {}),
+                              onPressed: () {
+                                myController.animateCamera(
+                                  CameraUpdate.newCameraPosition(
+                                    CameraPosition(target: LatLng(35.696223, -0.647417), zoom: 14),
+                                  ),
+                                );
+                              }),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 7.5),
+                      padding: const EdgeInsets.only(bottom: 7),
                       child: Container(
-                          height: 42,
-                          width: 42,
+                          height: 43,
+                          width: 43,
                           decoration: BoxDecoration(
                               border:
-                                  Border.all(color: Colors.white, width: 3.5),
+                                  Border.all(color: Colors.white, width: 2.5),
                               borderRadius: BorderRadius.circular(40),
                               gradient: LinearGradient(
                                   begin: Alignment.topLeft,
@@ -182,9 +191,19 @@ class HomePageState extends State<HomePage> {
                                     ThemeColors.gradientSemiMagenta,
                                   ])),
                           child: FloatingActionButton(
-                            onPressed: main,
+                            child: Icon(FontAwesomeIcons.streetView, size: 20),
                             backgroundColor: Color(0x00FFFFFF),
                             elevation: 0,
+                            onPressed: () {
+                              myController.animateCamera(
+                                CameraUpdate.newCameraPosition(
+                                  CameraPosition(
+                                      target: LatLng(35.796023, -0.652017),
+                                      zoom: 9.5,
+                                      bearing: -30),
+                                ),
+                              );
+                            },
                           )),
                     )
                   ],
@@ -213,6 +232,8 @@ class HomePageState extends State<HomePage> {
                         Container(
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.centerRight,
                                   colors: [
                                     ThemeColors.gradientPureMagenta,
                                     ThemeColors.gradientRed,
@@ -239,6 +260,9 @@ class HomePageState extends State<HomePage> {
                                       color: Colors.transparent,
                                       borderRadius: BorderRadius.circular(33)),
                                 ))),
+                        SizedBox(
+                          height: 12,
+                        ),
                         Text(User.getPrenom() + " " + User.getNom(),
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -286,11 +310,11 @@ class HomePageState extends State<HomePage> {
                                   shadowColor: ShadowColors.RegularShadow,
                                   borderRadius: BorderRadius.circular(100),
                                   child: Padding(
-                                      padding: EdgeInsets.all(4),
+                                      padding: EdgeInsets.all(6),
                                       child: Icon(
-                                        Icons.link,
+                                        FontAwesomeIcons.link,
                                         color: ThemeColors.analogousOrange,
-                                        size: 22,
+                                        size: 18,
                                       )),
                                 ),
                               ),
@@ -301,9 +325,9 @@ class HomePageState extends State<HomePage> {
                                 'Lignes disponibles',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 11,
+                                    fontSize: 12,
                                     color: ThemeColors.analogousOrange,
-                                    fontFamily: 'Oxygen',
+                                    fontFamily: 'Montserrat',
                                     fontWeight: FontWeight.bold),
                               ),
                             ],
@@ -343,11 +367,11 @@ class HomePageState extends State<HomePage> {
                                   shadowColor: ShadowColors.RegularShadow,
                                   borderRadius: BorderRadius.circular(100),
                                   child: Padding(
-                                      padding: EdgeInsets.all(4),
+                                      padding: EdgeInsets.all(6),
                                       child: Icon(
-                                        Icons.settings,
+                                        FontAwesomeIcons.cog,
                                         color: ThemeColors.analogousMagenta,
-                                        size: 22,
+                                        size: 18,
                                       )),
                                 ),
                               ),
@@ -358,9 +382,9 @@ class HomePageState extends State<HomePage> {
                                 'Options',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 11,
+                                    fontSize: 12,
                                     color: ThemeColors.analogousMagenta,
-                                    fontFamily: 'Oxygen',
+                                    fontFamily: 'Montserrat',
                                     fontWeight: FontWeight.bold),
                               ),
                             ],
@@ -450,7 +474,7 @@ class HomePageState extends State<HomePage> {
                       child: Row(
                         children: <Widget>[
                           Icon(
-                            Icons.reply,
+                            FontAwesomeIcons.signOutAlt,
                             size: 16,
                           ),
                           SizedBox(width: 12),
@@ -479,22 +503,32 @@ class HomePageState extends State<HomePage> {
         mapType: MapType.normal,
         initialCameraPosition:
             CameraPosition(target: LatLng(35.696223, -0.647417), zoom: 14),
+        onMapCreated: onMapCreated,
+        myLocationEnabled: true,
         markers: {
-      Marker(
-      markerId: MarkerId('MyPosition'),
-      icon: BitmapDescriptor.fromAsset("assets/MapElements/MarkerBus.png"),
-      position: LatLng(35.696023, -0.652017)),
-      Marker(
-      markerId: MarkerId('YourPosition'),
-      icon: BitmapDescriptor.fromAsset("assets/MapElements/MarkerBus.png"),
-      position: LatLng(35.706223, -0.647417)),
-      Marker(
-      markerId: MarkerId('Tu'),
-      icon: BitmapDescriptor.fromAsset("assets/MapElements/MarkerBus.png"),
-      position: LatLng(35.699523, -0.641417)),
+          Marker(
+              markerId: MarkerId('MyPosition'),
+              icon: BitmapDescriptor.fromAsset(
+                  "assets/MapElements/MarkerBus.png"),
+              position: LatLng(35.696023, -0.652017)),
+          Marker(
+              markerId: MarkerId('YourPosition'),
+              icon: BitmapDescriptor.fromAsset(
+                  "assets/MapElements/MarkerBus.png"),
+              position: LatLng(35.706223, -0.647417)),
+          Marker(
+              markerId: MarkerId('Tu'),
+              icon: BitmapDescriptor.fromAsset(
+                  "assets/MapElements/MarkerBus.png"),
+              position: LatLng(35.699523, -0.641417)),
         },
-        onMapCreated: (GoogleMapController controller) {},
       ),
     );
+  }
+
+  void onMapCreated(controller) {
+    setState(() {
+      myController = controller;
+    });
   }
 }

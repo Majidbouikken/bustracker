@@ -16,6 +16,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_maps_flutter: ^0.5.0
+  font_awesome_flutter: ^8.4.0
   flare_flutter:
       path: ../../../../SDK/flutter/packages/flare_flutter
 
