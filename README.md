@@ -1,16 +1,12 @@
 # projet_2cp_g5
 
-Contribution à la réalisation d’une plateforme de service en ligne pour les usagers des transports en commun 
+Contribution à la réalisation d’une plateforme de service en ligne pour les usagers des transports en commun. 
+Une platforme qui relie les passagers et les bus du réseaux en temps réel en fournissant des estimations précises du temps d'arrivée des bus à une station donnée.
 
-## Getting Started
+![logo](https://imgur.com/8Q9VjgV.png)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+![charte graphique](https://imgur.com/tbAs2Uc.png)
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+
